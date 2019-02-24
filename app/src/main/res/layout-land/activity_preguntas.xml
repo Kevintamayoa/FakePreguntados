@@ -15,7 +15,7 @@
         <TextView
             android:layout_gravity="center|left"
             android:text="1/10"
-            android:layout_marginLeft="@android:dimen/app_icon_size"
+            android:layout_marginLeft="130dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Space
@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Button
-            android:layout_marginRight="@android:dimen/app_icon_size"
+            android:layout_marginRight="84dp"
             android:layout_gravity="center|right"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:text="CHEAT"
@@ -39,7 +39,8 @@
         <Button
             android:text="Prev"
             android:layout_gravity="center"
-            android:layout_marginHorizontal="12dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginRight="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -53,7 +54,8 @@
         <Button
             android:text="Sig"
             android:layout_gravity="center"
-            android:layout_marginHorizontal="12dp"
+            android:layout_marginRight="48dp"
+            android:layout_marginLeft="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

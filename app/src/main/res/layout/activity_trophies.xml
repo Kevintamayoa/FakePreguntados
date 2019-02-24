@@ -7,9 +7,11 @@
     tools:context=".trophies">
 
     <ImageView
+        android:contentDescription="@string/img_trophies"
+        android:id="@+id/image_trophies"
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,7 +23,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
             android:orientation="vertical">
 
             <TextView
@@ -30,27 +33,28 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="1er lugar: AAA"
-                android:textSize="24dp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="2ndo lugar. AAA"
-                android:textSize="24dp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="3er lugar. AAA"
-                android:textSize="24dp" />
+                android:textSize="24sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
             android:orientation="vertical">
 
             <TextView
@@ -59,7 +63,7 @@
                 android:layout_gravity="center"
                 android:drawableEnd="@drawable/ic_cheater_24dp"
                 android:text="4to lugar. AAA"
-                android:textSize="24dp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -67,7 +71,7 @@
                 android:layout_gravity="center"
                 android:drawableEnd="@drawable/ic_cheater_24dp"
                 android:text="5to lugar. AAA"
-                android:textSize="24dp" />
+                android:textSize="24sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -75,10 +79,9 @@
                 android:layout_gravity="center"
                 android:drawableEnd="@drawable/ic_cheater_24dp"
                 android:text="6to lugar. AAA"
-                android:textSize="24dp" />
+                android:textSize="24sp" />
         </LinearLayout>
 
     </LinearLayout>
-
 
 </LinearLayout>

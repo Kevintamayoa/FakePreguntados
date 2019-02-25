@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,10 +18,10 @@
     </LinearLayout>
     <Space
         android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:layout_height="40dp" />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="125dp"
         android:gravity="center">
 
         <ImageView
@@ -32,45 +30,48 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:src="@mipmap/ic_launcher_round"
-
             />
+
     </LinearLayout>
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="50dp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Jugar"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:drawableTop="@drawable/ic_play_circle_outline_black_24dp"
 
-            />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Puntajes"
-            android:drawableTop="@drawable/ic_sportive_trophy_cup"
-            style="@style/Widget.AppCompat.Button.Borderless"
-                        />
-        <Button
-            android:id="@+id/config_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Config"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:drawableTop="@drawable/ic_settings_black_24dp"
-
-            />
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Jugar"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:drawableTop="@drawable/ic_play_circle_outline_black_24dp"
+
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Puntajes"
+        android:drawableTop="@drawable/ic_sportive_trophy_cup"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        />
+    <Button
+        android:id="@+id/config_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Config"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:drawableTop="@drawable/ic_settings_black_24dp"
+
+        />
+</LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -82,10 +83,8 @@
             android:text="Continuar juego"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:drawableTop="@drawable/ic_skip_next_black_24dp"
-
             />
 
 
     </LinearLayout>
-
 </LinearLayout>

@@ -7,11 +7,13 @@
     tools:context=".trophies">
 
     <ImageView
-        android:contentDescription="@string/img_trophies"
+        android:src="@drawable/ic_sportive_trophy_cup"
+        android:tint="#FFD700"
         android:id="@+id/image_trophies"
-        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="0dp" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/img_trophies" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,6 +30,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/primer_lugar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -36,6 +39,7 @@
                 android:textSize="24sp" />
 
             <TextView
+                android:id="@+id/segundo_lugar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -43,6 +47,7 @@
                 android:textSize="24sp" />
 
             <TextView
+                android:id="@+id/tercer_lugar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -58,6 +63,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/cuarto_lugar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -66,6 +72,7 @@
                 android:textSize="24sp" />
 
             <TextView
+                android:id="@+id/quinto_lugar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -74,6 +81,7 @@
                 android:textSize="24sp" />
 
             <TextView
+                android:id="@+id/sexto_lugar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

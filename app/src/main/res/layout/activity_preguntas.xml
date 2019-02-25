@@ -11,17 +11,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center">
+
         <TextView
+            android:id="@+id/num_pregunta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|left"
             android:layout_marginLeft="@android:dimen/app_icon_size"
             android:text="1/10" />
+
         <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
+
         <Button
+            android:id="@+id/cheat_activity_button"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,29 +39,37 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:gravity="center"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:gravity="center">
+
         <ImageButton
-            android:contentDescription="@string/non_desc"
-            android:src="@drawable/ic_chevron_left_black_24dp"
+            android:id="@+id/ant_pregunta"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/non_desc"
+            android:src="@drawable/ic_chevron_left_black_24dp" />
+
         <Space
             android:layout_width="12dp"
             android:layout_height="wrap_content" />
+
         <TextView
+            android:id="@+id/texto_pregunta"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Pregunta numero 1 sobre" />
+
         <Space
             android:layout_width="12dp"
             android:layout_height="wrap_content" />
+
         <ImageButton
-            android:contentDescription="@string/non_desc"
-            android:src="@drawable/ic_chevron_right_black_24dp"
+            android:id="@+id/sig_pregunta"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/non_desc"
+            android:src="@drawable/ic_chevron_right_black_24dp" />
     </LinearLayout>
 
     <!-- Botones de respuesta -->
@@ -65,20 +78,25 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
         android:gravity="center">
+
         <ImageButton
-            android:contentDescription="@string/non_desc"
+            android:id="@+id/correct_button"
             style="@style/Base.Widget.AppCompat.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/non_desc"
             android:src="@drawable/ic_check_green_24dp" />
+
         <Space
             android:layout_width="24dp"
             android:layout_height="0dp" />
+
         <ImageButton
-            android:contentDescription="@string/non_desc"
+            android:id="@+id/incorrect_button"
             style="@style/Base.Widget.AppCompat.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/non_desc"
             android:src="@drawable/ic_clear_red_24dp" />
     </LinearLayout>
 

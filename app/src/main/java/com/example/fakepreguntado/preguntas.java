@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class preguntas extends AppCompatActivity {
 
     TextView numPregunta;
@@ -30,38 +32,39 @@ public class preguntas extends AppCompatActivity {
         correctButton = findViewById(R.id.correct_button);
         incorrectButton = findViewById(R.id.incorrect_button);
 
-        numPregunta.setText("0/0");
-
+        //Pendiente
+        numPregunta.setText("");
+        //Pendiente
         cheatActivityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
-
+        //Pendiente
         pregAnterior.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
-
+        //Pendiente
         pregSiguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
-
-        textoPregunta.setText("P");
-
+        //Pendiente
+        textoPregunta.setText("");
+        //Pendiente
         correctButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
-
+        //Pendiente
         incorrectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

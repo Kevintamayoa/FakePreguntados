@@ -1,8 +1,8 @@
 package com.example.fakepreguntado;
 
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,5 +34,13 @@ public class trophies extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+    }
+    //Pendiente
+    public void ShowMyLatestScore(View v){
+
+    }
+    //Pendiente
+    public void ShowScore(View v){
+
     }
 }

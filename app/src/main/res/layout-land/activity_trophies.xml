@@ -14,7 +14,7 @@
         android:layout_gravity="center"
         android:layout_weight="2"
         android:contentDescription="@string/img_trophies"
-        android:tint="#FFD700""/>
+        android:tint="#FFD700"/>
 
     <LinearLayout
         android:layout_width="wrap_content"

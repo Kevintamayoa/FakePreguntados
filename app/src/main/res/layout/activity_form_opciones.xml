@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".form_opciones">
+    tools:context=".form_opciones"
+    android:background="#ffffff"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,6 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Configuración"
+        android:textColor="#000000"
+        android:textStyle="bold"
         android:textSize="18dp"/>
     </LinearLayout>
 
@@ -29,8 +33,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Temas:"
+            android:textColor="#000000"
             android:textSize="18dp"/>
         <CheckBox
+            android:id="@+id/todos_check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -112,7 +118,7 @@
 </LinearLayout>
     <Space
         android:layout_width="match_parent"
-        android:layout_height="30dp" />
+        android:layout_height="20dp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -121,16 +127,95 @@
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Configuración"
-            android:textSize="18dp"/>
-<NumberPicker
-    android:gravity="center"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    />
-        <Spinner
+            android:text="Número de preguntas:"
+            android:textSize="14dp"/>
+
+        <com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"></Spinner>
+            android:layout_height="match_parent"
+            app:snp_buttonIconLeft="@drawable/ic_chevron_left_black_24dp"
+            app:snp_buttonIconRight="@drawable/ic_chevron_right_black_24dp"
+            app:snp_maxValue="40"
+            app:snp_minValue="5"
+            app:snp_stepSize="1"
+            app:snp_updateInterval="1"
+            app:snp_value="15"></com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker>
+
+    </LinearLayout>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:layout_margin="2dp"
+        android:background="#262626"
+        android:layout_marginBottom="10dp">
+        <TextView
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Dificultad"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:textSize="14dp"/>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="#ffff"
+      android:gravity="center">
+
+      <RadioButton
+          android:id="@+id/dificil_rb"
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:text="Dificil"/>
+
+      <Space
+          android:layout_width="8dp"
+          android:layout_height="match_parent" />
+      <RadioButton
+          android:id="@+id/media_rb"
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:text="Media"/>
+      <Space
+          android:layout_width="8dp"
+          android:layout_height="match_parent" />
+      <RadioButton
+          android:id="@+id/facil_id"
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:text="Fácil"/>
+
+  </LinearLayout>
+    </LinearLayout>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center">
+        <Switch
+            android:id="@+id/cheat_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Habilitar cheats   "
+            android:checked="false"/>
+
+        <com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:snp_buttonIconLeft="@drawable/ic_chevron_left_black_24dp"
+            app:snp_buttonIconRight="@drawable/ic_chevron_right_black_24dp"
+            app:snp_maxValue="40"
+            app:snp_minValue="5"
+            app:snp_stepSize="1"
+            app:snp_updateInterval="1"
+            app:snp_value="15"></com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker>
 
     </LinearLayout>
 </LinearLayout>

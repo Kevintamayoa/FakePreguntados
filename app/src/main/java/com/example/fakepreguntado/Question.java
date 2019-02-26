@@ -3,31 +3,32 @@ package com.example.fakepreguntado;
 public class Question {
     private int id;
     private String pregunta;
-    private boolean status;
+    private int status;
     private boolean respuesta;
     private boolean cheatStatus;
     private int dificultad;
     private int categoria;
     private int puntaje;
 
-    public Question(int id, String pregunta, boolean status, boolean respuesta, boolean cheatStatus, int dificultad, int categoria, int puntaje) {
+    public Question(int id, String pregunta, boolean respuesta, int dificultad, int categoria) {
         this.id = id;
         this.pregunta = pregunta;
-        this.status = status;
         this.respuesta = respuesta;
-        this.cheatStatus = cheatStatus;
         this.dificultad = dificultad;
         this.categoria = categoria;
-        this.puntaje = puntaje;
     }
-
+    private int pregunta_id;
+    public Question(int id, int pregunta, int status, boolean cheatStatus) {
+        this.id = id;
+        pregunta_id = pregunta;
+        this.status = status;
+        this.cheatStatus = cheatStatus;
+    }
     public int getQuestionId(){return id;}
 
     public String getQuestion(){return pregunta;}
 
-    public boolean getStatus(){return status;}
-
-    public void setStatus(){status=true;}
+    public int getStatus(){return status;}
 
     public boolean getAnswer(){return respuesta;}
 

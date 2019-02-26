@@ -5,25 +5,25 @@ public class Question {
     private String pregunta;
     private boolean status;
     private boolean respuesta;
-    private boolean cheat;
+    private boolean cheatStatus;
     private int dificultad;
     private int categoria;
     private int puntaje;
 
-    public Question(int id, String pregunta, boolean status, boolean respuesta, boolean cheat, int dificultad, int categoria, int puntaje) {
+    public Question(int id, String pregunta, boolean status, boolean respuesta, boolean cheatStatus, int dificultad, int categoria, int puntaje) {
         this.id = id;
         this.pregunta = pregunta;
         this.status = status;
         this.respuesta = respuesta;
-        this.cheat = cheat;
+        this.cheatStatus = cheatStatus;
         this.dificultad = dificultad;
         this.categoria = categoria;
         this.puntaje = puntaje;
     }
 
-    public int getId(){ return id;}
+    public int getQuestionId(){return id;}
 
-    public String getQuestion(){ return pregunta;}
+    public String getQuestion(){return pregunta;}
 
     public boolean getStatus(){return status;}
 
@@ -31,9 +31,9 @@ public class Question {
 
     public boolean getAnswer(){return respuesta;}
 
-    public boolean getCheat(){return cheat;}
+    public boolean getCheatStatus(){return cheatStatus;}
 
-    public void setCheat(){cheat=true;}
+    public void setCheatStatus(){cheatStatus=true;}
 
     public int getDifficulty() {return dificultad;}
 

@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class trophies extends AppCompatActivity {
+public class TrofeosActivity extends AppCompatActivity {
 
     ImageView endTrophy;
     TextView primerLugar;

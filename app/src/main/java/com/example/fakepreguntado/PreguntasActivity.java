@@ -7,9 +7,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 
-public class preguntas extends AppCompatActivity {
+public class PreguntasActivity extends AppCompatActivity {
 
     TextView numPregunta;
     Button cheatActivityButton;
@@ -18,6 +17,8 @@ public class preguntas extends AppCompatActivity {
     TextView textoPregunta;
     ImageButton correctButton;
     ImageButton incorrectButton;
+
+    public double puntajeTotal=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

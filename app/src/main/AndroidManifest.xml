@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".preguntas"></activity>
-        <activity android:name=".trophies" />
+        <activity android:name=".PreguntasActivity"></activity>
+        <activity android:name=".TrofeosActivity" />
         <activity android:name=".form_opciones" />
         <activity android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">

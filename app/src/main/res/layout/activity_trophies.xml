@@ -53,15 +53,17 @@
                 android:layout_gravity="center"
                 android:text="3er lugar. AAA"
                 android:textSize="24sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
-            android:orientation="vertical">
-
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="12dp" />
+            <View
+                android:layout_width="300dp"
+                android:layout_gravity="center"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"/>
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="12dp" />
             <TextView
                 android:id="@+id/cuarto_lugar"
                 android:layout_width="wrap_content"

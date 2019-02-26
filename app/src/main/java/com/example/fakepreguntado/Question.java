@@ -5,7 +5,6 @@ public class Question {
     private String pregunta;
     private int status;
     private boolean respuesta;
-    private boolean cheatStatus;
     private int dificultad;
     private int categoria;
     private int puntaje;
@@ -18,11 +17,10 @@ public class Question {
         this.categoria = categoria;
     }
     private int pregunta_id;
-    public Question(int id, int pregunta, int status, boolean cheatStatus) {
+    public Question(int id, int pregunta, int status) {
         this.id = id;
         pregunta_id = pregunta;
         this.status = status;
-        this.cheatStatus = cheatStatus;
     }
     public int getQuestionId(){return id;}
 
@@ -31,10 +29,6 @@ public class Question {
     public int getStatus(){return status;}
 
     public boolean getAnswer(){return respuesta;}
-
-    public boolean getCheatStatus(){return cheatStatus;}
-
-    public void setCheatStatus(){cheatStatus=true;}
 
     public int getDifficulty() {return dificultad;}
 

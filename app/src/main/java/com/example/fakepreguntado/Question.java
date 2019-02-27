@@ -35,6 +35,4 @@ public class Question {
     public int getCategory(){return categoria;}
 
     public int getPoints(){return puntaje;}
-
-
 }

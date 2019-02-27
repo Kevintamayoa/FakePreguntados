@@ -55,6 +55,7 @@
 
             />
         <Button
+            android:id="@+id/puntajes_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -79,16 +80,13 @@
         android:layout_height="wrap_content"
         android:gravity="center">
         <Button
+            android:id="@+id/continuar_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Continuar juego"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:drawableTop="@drawable/ic_skip_next_black_24dp"
-
-            />
-
+            android:drawableTop="@drawable/ic_skip_next_black_24dp" />
 
     </LinearLayout>
-
 </LinearLayout>

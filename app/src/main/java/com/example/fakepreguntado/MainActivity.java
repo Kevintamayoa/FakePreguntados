@@ -10,11 +10,18 @@ public class MainActivity extends AppCompatActivity {
 
     Button Configbtn;
     Button Playbtn;
+    Button Trophiesbtn;
+    Button Continuebtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Configbtn=findViewById(R.id.config_btn);
+        Playbtn=findViewById(R.id.jugar_btn);
+        Trophiesbtn = findViewById(R.id.puntajes_btn);
+        Continuebtn = findViewById(R.id.continuar_btn);
+
         Configbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -23,12 +30,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Playbtn=findViewById(R.id.jugar_btn);
         Playbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent play = new Intent(MainActivity.this,PreguntasActivity.class);
                 startActivity(play);
+            }
+        });
+
+        Trophiesbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,TrofeosActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Continuebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }

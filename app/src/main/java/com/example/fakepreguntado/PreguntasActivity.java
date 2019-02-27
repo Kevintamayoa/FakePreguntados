@@ -16,9 +16,10 @@ import java.util.List;
 public class PreguntasActivity extends AppCompatActivity {
 
     TextView numPregunta;
+    Button finPreguntas;
     Button cheatActivityButton;
-    ImageButton pregAnterior;
-    ImageButton pregSiguiente;
+    ImageButton pregAnteriorbtn;
+    ImageButton pregSiguientebtn;
     TextView textoPregunta;
     ImageButton correctButton;
     ImageButton incorrectButton;
@@ -33,12 +34,14 @@ public class PreguntasActivity extends AppCompatActivity {
         setContentView(R.layout.activity_preguntas);
 
         numPregunta = findViewById(R.id.num_pregunta);
+        finPreguntas = findViewById(R.id.endQuizz_btn);
         cheatActivityButton = findViewById(R.id.cheat_activity_button);
-        pregAnterior = findViewById(R.id.ant_pregunta);
-        pregSiguiente = findViewById(R.id.sig_pregunta);
+        pregAnteriorbtn = findViewById(R.id.ant_pregunta);
+        pregSiguientebtn = findViewById(R.id.sig_pregunta);
         textoPregunta = findViewById(R.id.texto_pregunta);
         correctButton = findViewById(R.id.correct_button);
         incorrectButton = findViewById(R.id.incorrect_button);
+
 
         preguntasActivityModel = ViewModelProviders.of(this).get(PreguntasActivityModel.class);
         preguntasActivityModel.loadGameQuestions();
@@ -46,14 +49,25 @@ public class PreguntasActivity extends AppCompatActivity {
 
         numPregunta.setText(preguntasActivityModel.getCurrentQuestionIndexText());
 
+        finPreguntas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         cheatActivityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 preguntasActivityModel.PassCheatingStatus();
+                Toast.makeText(PreguntasActivity.this,
+                        "La respuesta correcta es "+
+                                Boolean.toString(preguntasActivityModel.getCurrentQuestion().getAnswer()).toUpperCase(),
+                        Toast.LENGTH_LONG).show();
             }
         });
 
-        pregAnterior.setOnClickListener(new View.OnClickListener() {
+        pregAnteriorbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 textoPregunta.setText(preguntasActivityModel.getPreviousQuestion().getQuestion());
@@ -61,7 +75,7 @@ public class PreguntasActivity extends AppCompatActivity {
             }
         });
 
-        pregSiguiente.setOnClickListener(new View.OnClickListener() {
+        pregSiguientebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 textoPregunta.setText(preguntasActivityModel.getNextQuestion().getQuestion());
@@ -75,16 +89,28 @@ public class PreguntasActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Question question = preguntasActivityModel.getCurrentQuestion();
-                if (question.getAnswer()) {
-                    Toast.makeText(PreguntasActivity.this,
-                            "¡¡CORRECTO!!",
-                            Toast.LENGTH_SHORT).show();
-                    preguntasActivityModel.setCurrentQuestionStatus(true);
-                } else {
-                    Toast.makeText(PreguntasActivity.this,
-                            "¡¡INCORRECTO!!",
-                            Toast.LENGTH_SHORT).show();
-                    preguntasActivityModel.setCurrentQuestionStatus(false);
+                if(question.getStatus()==0) {
+                    if (question.getAnswer()) {
+                        Toast.makeText(PreguntasActivity.this,
+                                "¡¡CORRECTO!!",
+                                Toast.LENGTH_SHORT).show();
+                        preguntasActivityModel.setCurrentQuestionStatus(true);
+                    }else{
+                        Toast.makeText(PreguntasActivity.this,
+                                "¡¡INCORRECTO!!",
+                                Toast.LENGTH_SHORT).show();
+                        preguntasActivityModel.setCurrentQuestionStatus(false);
+                    }
+                }else{
+                    if (question.getStatus()==2) {
+                        Toast.makeText(PreguntasActivity.this,
+                                "La pregunta ya fue contestada y fue ¡¡CORRECTA!!",
+                                Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(PreguntasActivity.this,
+                                "La pregunta ya fue contestada y fue ¡¡INCORRECTA!!",
+                                Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -93,16 +119,28 @@ public class PreguntasActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Question question = preguntasActivityModel.getCurrentQuestion();
-                if (!question.getAnswer()) {
-                    Toast.makeText(PreguntasActivity.this,
-                            "¡¡CORRECTO!!",
-                            Toast.LENGTH_SHORT).show();
-                    preguntasActivityModel.setCurrentQuestionStatus(true);
-                } else {
-                    Toast.makeText(PreguntasActivity.this,
-                            "¡¡INCORRECTO!!",
-                            Toast.LENGTH_SHORT).show();
-                    preguntasActivityModel.setCurrentQuestionStatus(false);
+                if(question.getStatus()==0) {
+                    if (!question.getAnswer()) {
+                        Toast.makeText(PreguntasActivity.this,
+                                "¡¡CORRECTO!!",
+                                Toast.LENGTH_SHORT).show();
+                        preguntasActivityModel.setCurrentQuestionStatus(true);
+                    }else{
+                        Toast.makeText(PreguntasActivity.this,
+                                "¡¡INCORRECTO!!",
+                                Toast.LENGTH_SHORT).show();
+                        preguntasActivityModel.setCurrentQuestionStatus(false);
+                    }
+                }else{
+                    if (question.getStatus()==2) {
+                        Toast.makeText(PreguntasActivity.this,
+                                "La pregunta ya fue contestada y fue ¡¡CORRECTA!!",
+                                Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(PreguntasActivity.this,
+                                "La pregunta ya fue contestada y fue ¡¡INCORRECTA!!",
+                                Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

@@ -2,8 +2,10 @@ package com.example.fakepreguntado;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.RadioButton;
+import android.widget.Switch;
 
 import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker;
 
@@ -18,6 +20,11 @@ public class form_opciones extends AppCompatActivity {
     CheckBox matematicasCheck;
     CheckBox arteCheck;
     ScrollableNumberPicker numPreguntasScroll;
+    RadioButton dificilRad;
+    RadioButton medioRad;
+    RadioButton facilRad;
+    Switch cheatSwitch;
+    ScrollableNumberPicker cheatScroll;
 
 
     @Override
@@ -34,11 +41,15 @@ public class form_opciones extends AppCompatActivity {
         matematicasCheck=findViewById(R.id.matematicas_check);
         arteCheck=findViewById(R.id.arte_check);
         numPreguntasScroll=findViewById(R.id.numpreguntas_scroll);
+        dificilRad=findViewById(R.id.dificil_rb);
+        medioRad=findViewById(R.id.media_rb);
+        facilRad=findViewById(R.id.facil_id);
+        cheatSwitch=findViewById(R.id.cheat_switch);
+        cheatScroll=findViewById(R.id.cheat_scroll);
 
-
-        todosCheck.setOnClickListener(new View.OnClickListener() {
+        todosCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(!todosCheck.isChecked()) {
                     historiaCheck.setChecked(false);
                     geografiaCheck.setChecked(false);
@@ -60,5 +71,10 @@ public class form_opciones extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
     }
 }

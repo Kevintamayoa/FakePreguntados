@@ -173,7 +173,7 @@
             app:snp_buttonIconLeft="@drawable/ic_chevron_left_black_24dp"
             app:snp_buttonIconRight="@drawable/ic_chevron_right_black_24dp"
             app:snp_maxValue="40"
-            app:snp_minValue="5"
+            app:snp_minValue="10"
             app:snp_stepSize="1"
             app:snp_updateInterval="1"
             app:snp_value="15"></com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker>
@@ -257,16 +257,17 @@
             android:id="@+id/cheat_switch"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:checked="false"
-            android:text="Habilitar cheats   " />
+            android:checked="true"
+            android:text="Habilitar cheats   "            />
 
         <com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:id="@+id/cheat_scroll"
             app:snp_buttonIconLeft="@drawable/ic_chevron_left_black_24dp"
             app:snp_buttonIconRight="@drawable/ic_chevron_right_black_24dp"
             app:snp_maxValue="40"
-            app:snp_minValue="5"
+            app:snp_minValue="1"
             app:snp_stepSize="1"
             app:snp_updateInterval="1"
             app:snp_value="3"></com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker>

@@ -19,5 +19,7 @@ public class Usuario {
 
     public double getPuntajeMax(){return puntajeMax;}
 
+    public void setCheatingStatus(){cheat = true;}
+
     public boolean getCheatStatus(){return cheat;}
 }

@@ -42,13 +42,14 @@ public class PreguntasActivity extends AppCompatActivity {
 
         preguntasActivityModel = ViewModelProviders.of(this).get(PreguntasActivityModel.class);
         preguntasActivityModel.loadGameQuestions();
+        preguntasActivityModel.loadNewUser();
 
         numPregunta.setText(preguntasActivityModel.getCurrentQuestionIndexText());
-        //Pendiente
+
         cheatActivityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                preguntasActivityModel.PassCheatingStatus();
             }
         });
 
@@ -56,6 +57,7 @@ public class PreguntasActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 textoPregunta.setText(preguntasActivityModel.getPreviousQuestion().getQuestion());
+                numPregunta.setText(preguntasActivityModel.getCurrentQuestionIndexText());
             }
         });
 
@@ -63,6 +65,7 @@ public class PreguntasActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 textoPregunta.setText(preguntasActivityModel.getNextQuestion().getQuestion());
+                numPregunta.setText(preguntasActivityModel.getCurrentQuestionIndexText());
             }
         });
 
@@ -76,10 +79,12 @@ public class PreguntasActivity extends AppCompatActivity {
                     Toast.makeText(PreguntasActivity.this,
                             "¡¡CORRECTO!!",
                             Toast.LENGTH_SHORT).show();
+                    preguntasActivityModel.setCurrentQuestionStatus(true);
                 } else {
                     Toast.makeText(PreguntasActivity.this,
                             "¡¡INCORRECTO!!",
                             Toast.LENGTH_SHORT).show();
+                    preguntasActivityModel.setCurrentQuestionStatus(false);
                 }
             }
         });
@@ -92,10 +97,12 @@ public class PreguntasActivity extends AppCompatActivity {
                     Toast.makeText(PreguntasActivity.this,
                             "¡¡CORRECTO!!",
                             Toast.LENGTH_SHORT).show();
+                    preguntasActivityModel.setCurrentQuestionStatus(true);
                 } else {
                     Toast.makeText(PreguntasActivity.this,
                             "¡¡INCORRECTO!!",
                             Toast.LENGTH_SHORT).show();
+                    preguntasActivityModel.setCurrentQuestionStatus(false);
                 }
             }
         });

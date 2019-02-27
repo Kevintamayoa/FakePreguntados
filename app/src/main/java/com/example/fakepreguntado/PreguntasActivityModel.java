@@ -5,9 +5,10 @@ import android.arch.lifecycle.ViewModel;
 import java.util.List;
 
 public class PreguntasActivityModel extends ViewModel {
-    private BancoDePreguntas bancoDePreguntas;
     private List<Question> preguntas;
     private int currentQuestionIndex;
+    private Usuario usuario;
+    private double puntajeFinal;
 
     public int getCurrentQuestionIndex() {
         return currentQuestionIndex;
@@ -22,11 +23,21 @@ public class PreguntasActivityModel extends ViewModel {
     }
 
     public void loadGameQuestions() {
-        if (bancoDePreguntas == null) {
+        if (preguntas == null) {
             currentQuestionIndex = 0;
-            bancoDePreguntas = new BancoDePreguntas();
+            BancoDePreguntas bancoDePreguntas = new BancoDePreguntas();
             preguntas = bancoDePreguntas.getAllQuestions();
         }
+    }
+
+    public void loadNewUser(){
+        if(usuario==null){
+            usuario = new Usuario(1,"AAA",0,false);
+        }
+    }
+
+    public void PassCheatingStatus(){
+        usuario.setCheatingStatus();
     }
 
     public Question getCurrentQuestion() {
@@ -44,6 +55,10 @@ public class PreguntasActivityModel extends ViewModel {
     }
 
     public String getCurrentQuestionIndexText(){
-        return currentQuestionIndex+"/"+preguntas.size()+1;
+        return (currentQuestionIndex+1)+"/"+preguntas.size();
+    }
+
+    public void setCurrentQuestionStatus(boolean choice){
+            preguntas.get(currentQuestionIndex).setStatus(choice);
     }
 }

@@ -1,31 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:background="#ffffff"
     android:layout_height="match_parent"
-    tools:context=".form_opciones"
-
-    >
+    android:orientation="vertical"
+    android:background="#ffffff">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <TextView
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Configuración"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        android:textSize="18dp"/>
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Configuración"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="18dp"/>
     </LinearLayout>
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="15dp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,37 +43,35 @@
         android:layout_height="wrap_content"
         android:gravity="center">
 
-    <CheckBox
-        android:id="@+id/historia_check"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Historia"/>
+        <CheckBox
+            android:id="@+id/historia_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Historia"/>
 
         <Space
             android:layout_width="20dp"
             android:layout_height="match_parent" />
-    <CheckBox
-        android:id="@+id/geografia_check"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Geografía"/>
+        <CheckBox
+            android:id="@+id/geografia_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Geografía"/>
         <Space
             android:layout_width="20dp"
             android:layout_height="match_parent" />
 
-    <CheckBox
-        android:id="@+id/idiomas_check"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Idiomas"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
+        <CheckBox
+            android:id="@+id/idiomas_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Idiomas"/>
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="match_parent" />
         <CheckBox
             android:id="@+id/ciencias_check"
             android:layout_width="wrap_content"
@@ -86,8 +79,15 @@
             android:gravity="center"
             android:text="Ciencias"/>
         <Space
-        android:layout_width="20dp"
-        android:layout_height="match_parent" />
+            android:layout_width="20dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
         <CheckBox
             android:id="@+id/deportes_check"
             android:layout_width="wrap_content"
@@ -97,7 +97,24 @@
         <Space
             android:layout_width="20dp"
             android:layout_height="match_parent" />
-
+        <CheckBox
+            android:id="@+id/entretenimiento_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Entretenimiento"/>
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="match_parent" />
+        <CheckBox
+            android:id="@+id/matematicas_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Matemáticas"/>
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="match_parent" />
         <CheckBox
             android:id="@+id/arte_check"
             android:layout_width="wrap_content"
@@ -105,44 +122,17 @@
             android:gravity="center"
             android:text="Arte"/>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
-    <CheckBox
-        android:id="@+id/matematicas_check"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Matemáticas"/>
-        <Space
-            android:layout_width="20dp"
-            android:layout_height="match_parent" />
-        <CheckBox
-            android:id="@+id/entretenimiento_check"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Entretenimiento"/>
 
-</LinearLayout>
-    <Space
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="5dp"
-        android:background="@android:color/darker_gray" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
         android:gravity="center"
         android:background="@android:color/darker_gray">
     </LinearLayout>
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@android:color/darker_gray" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:gravity="center">
         <TextView
             android:gravity="center"
@@ -164,23 +154,17 @@
             app:snp_value="15"></com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker>
 
     </LinearLayout>
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@android:color/darker_gray" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="5dp"
         android:gravity="center"
         android:background="@android:color/darker_gray">
     </LinearLayout>
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@android:color/darker_gray" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:gravity="center"
         android:layout_margin="2dp"
         android:background="#262626"
@@ -194,52 +178,45 @@
             android:textColor="#ffffff"
             android:textSize="14dp"/>
 
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:background="#ffff"
-      android:gravity="center">
-      <RadioButton
-          android:id="@+id/facil_rb"
-          android:layout_width="wrap_content"
-          android:layout_height="match_parent"
-          android:text="Fácil"/>
-      <Space
-          android:layout_width="8dp"
-          android:layout_height="match_parent" />
-      <RadioButton
-          android:id="@+id/dificil_rb"
-          android:layout_width="wrap_content"
-          android:layout_height="match_parent"
-          android:text="Dificil"/>
-
-      <Space
-          android:layout_width="8dp"
-          android:layout_height="match_parent" />
-      <RadioButton
-          android:id="@+id/media_rb"
-          android:layout_width="wrap_content"
-          android:layout_height="match_parent"
-          android:text="Media"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffff"
+            android:gravity="center">
 
 
+            <RadioButton
+                android:id="@+id/facil_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Fácil"/>
+            <Space
+                android:layout_width="8dp"
+                android:layout_height="match_parent" />
+            <RadioButton
+                android:id="@+id/dificil_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Dificil"/>
 
-  </LinearLayout>
+            <Space
+                android:layout_width="8dp"
+                android:layout_height="match_parent" />
+            <RadioButton
+                android:id="@+id/media_rb"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Media"/>
+
+
+        </LinearLayout>
     </LinearLayout>
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@android:color/darker_gray" />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="5dp"
         android:gravity="center"
         android:background="@android:color/darker_gray">
     </LinearLayout>
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@android:color/darker_gray" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -252,12 +229,9 @@
             android:checked="false"/>
 
     </LinearLayout>
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:gravity="center">
         <TextView
             android:id="@+id/cheat_text"
@@ -278,21 +252,19 @@
             app:snp_stepSize="1"
             app:snp_scrollEnabled="false"
             app:snp_updateInterval="1"
-            app:snp_value="3"></com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker>
+            app:snp_value="15"></com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker>
     </LinearLayout>
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center">
-      <Button
-          android:id="@+id/atras_buttom"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:background="@drawable/ic_chevron_left_black_24dp"
-          android:backgroundTint="@android:color/holo_blue_dark"
-          />
-          </LinearLayout>
+        <Button
+            android:id="@+id/atras_buttom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_chevron_left_black_24dp"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            />
+    </LinearLayout>
 </LinearLayout>

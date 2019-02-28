@@ -1,5 +1,8 @@
 package com.example.fakepreguntado;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Usuario {
     private int id;
     private String name;
@@ -22,4 +25,6 @@ public class Usuario {
     public void setCheatingStatus(){cheat = true;}
 
     public boolean getCheatStatus(){return cheat;}
+    public static List<Usuario> Usuarios=new ArrayList<Usuario>();
+
 }

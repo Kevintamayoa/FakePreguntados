@@ -4,19 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BancoDePreguntas {
-    private List<Question> questions;
-
-    /*
-        3,"Ciencias"
-        4,"Deportes"
-        5,"Entretenimiento
-        6,"Matemáticas"
-        7,"Arte"
-    * */
-
     public List<Question> getAllQuestions() {
-        if (questions == null) {
-            questions = new ArrayList<>();
+            List<Question> questions = new ArrayList<>();
             questions.add(new Question(0,"Cesar Augusto fue el primer emperador romano",0,true,1,0));
             questions.add(new Question(1,"Galileo Galilei fue ejecutado por afirmar que la tierra era el centro del universo",0,false,1,0));
             questions.add(new Question(2,"Hitler aplico a la escuela de pintura en viena en su juventud",0, true,2,0));
@@ -57,7 +46,7 @@ public class BancoDePreguntas {
             questions.add(new Question(37,"",0,false,2,7));
             questions.add(new Question(38,"",0,false,2,7));
             questions.add(new Question(39,"",0,false,3,7));
-        }
+
 
         return questions;
     }

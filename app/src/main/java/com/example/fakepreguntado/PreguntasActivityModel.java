@@ -61,4 +61,6 @@ public class PreguntasActivityModel extends ViewModel {
     public void setCurrentQuestionStatus(boolean choice){
             preguntas.get(currentQuestionIndex).setStatus(choice);
     }
+
+    //public void Puntaje
 }

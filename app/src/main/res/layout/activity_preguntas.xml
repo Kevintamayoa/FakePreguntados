@@ -16,22 +16,27 @@
             android:id="@+id/num_pregunta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center|left"
-            android:layout_marginLeft="@android:dimen/app_icon_size"
             android:text="1/10" />
 
         <Space
-            android:layout_width="0dp"
+            android:layout_width="48dp"
+            android:layout_height="0dp"
+            android:layout_marginRight="18dp"/>
+        <Button
+            android:id="@+id/endQuizz_btn"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:text="Finalizar"/>
+        <Space
+            android:layout_width="24dp"
+            android:layout_height="0dp"/>
         <Button
             android:id="@+id/cheat_activity_button"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center|right"
-            android:layout_marginRight="@android:dimen/app_icon_size"
             android:text="CHEAT" />
     </LinearLayout>
 

@@ -14,8 +14,10 @@ import android.widget.Toast;
 
 import com.michaelmuenzer.android.scrollablennumberpicker.ScrollableNumberPicker;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class form_opciones extends AppCompatActivity {
-    public static final String CHEATED_FLAG_KEY = "CHEATED_FLAG_KEY";
     public static final String CHEAT_STRING="CHEAT_STRING";
     public static final boolean CHEAT=false;
     public static final int CHEAT_INT = 1;
@@ -124,37 +126,106 @@ public class form_opciones extends AppCompatActivity {
          public void onClick(View v) {
              Bundle parmetros = new Bundle();
              parmetros.putBoolean("cheat", CheatsSwitch.isChecked());
-             Intent config=new Intent(form_opciones.this,MainActivity.class);
+             parmetros.putInt("cheat_num", CheatsScroll.getValue());
+             parmetros.putBoolean("historia", HistoriaCheck.isChecked());
+             parmetros.putBoolean("geografia", GeografiaCheck.isChecked());
+             parmetros.putBoolean("idiomas", IdiomasCheck.isChecked());
+             parmetros.putBoolean("ciencias", CienciasCheck.isChecked());
+             parmetros.putBoolean("deportes", DeportesCheck.isChecked());
+             parmetros.putBoolean("entretenimiento", EntretenimientoCheck.isChecked());
+             parmetros.putBoolean("matematicas", MatematicasCheck.isChecked());
+             parmetros.putBoolean("arte", ArteCheck.isChecked());
+
+             parmetros.putInt("preguntas_num", PreguntaScroll.getValue());
+             if(Facil.isChecked()){
+                 parmetros.putInt("dificultad", 1);
+             } else    if(Medio.isChecked()){
+                 parmetros.putInt("dificultad", 2);
+             }
+             else    if(Dificil.isChecked()){
+                 parmetros.putInt("dificultad", 3);
+             }else{
+                 parmetros.putInt("dificultad", 0);
+             }
+            Intent config=new Intent(form_opciones.this,MainActivity.class);
              config.putExtras(parmetros);
              startActivity(config);
          }
      });
+        CheatsSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (CheatsSwitch.isChecked()) {
+                    CheatsScroll.setVisibility(View.VISIBLE);
+                    CheatsText.setVisibility(View.VISIBLE);
+                    CheatsScroll.setValue(3);
+                } else {
+                    CheatsScroll.setVisibility(View.INVISIBLE);
+                    CheatsText.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
         Bundle parametros = this.getIntent().getExtras();
         if (parametros != null) {
             CheatsSwitch.setChecked(parametros.getBoolean("cheat"));
-        }
+            if(CheatsSwitch.isChecked()){
+                CheatsScroll.setVisibility(View.VISIBLE);
+                CheatsText.setVisibility(View.VISIBLE);
+                CheatsScroll.setValue(parametros.getInt("cheat_num"));
+            }else{
+                CheatsScroll.setVisibility(View.INVISIBLE);
+                CheatsText.setVisibility(View.INVISIBLE);
+                CheatsScroll.setValue(parametros.getInt("cheat_num"));
 
+            }
+            PreguntaScroll.setValue(parametros.getInt("preguntas_num"));
+            int DIFICULTAD=  parametros.getInt("dificultad");
+            if(DIFICULTAD==1){
+                Facil.setChecked(true);
+                Medio.setChecked(false);
+                Dificil.setChecked(false);
+            }else   if(DIFICULTAD==2){
+                Facil.setChecked(false);
+                Medio.setChecked(true);
+                Dificil.setChecked(false);
+            }else   if(DIFICULTAD==3){
+                Facil.setChecked(false);
+                Medio.setChecked(false);
+                Dificil.setChecked(true);
+            }else{
+                Facil.setChecked(false);
+                Medio.setChecked(false);
+                Dificil.setChecked(false);
+            }
+                   HistoriaCheck.setChecked(parametros.getBoolean("historia"));
+                    GeografiaCheck.setChecked(parametros.getBoolean("geografia"));
+                    IdiomasCheck.setChecked(parametros.getBoolean("idiomas"));
+                    CienciasCheck.setChecked( parametros.getBoolean("ciencias"));
+                    DeportesCheck.setChecked(parametros.getBoolean("deportes"));
+                    EntretenimientoCheck.setChecked(parametros.getBoolean("entretenimiento"));
+                    MatematicasCheck.setChecked( parametros.getBoolean("matematicas"));
+                    ArteCheck.setChecked( parametros.getBoolean("arte"));
+
+                if(HistoriaCheck.isChecked()&&GeografiaCheck.isChecked()&&IdiomasCheck.isChecked()&&CienciasCheck.isChecked()
+                &&DeportesCheck.isChecked()&&EntretenimientoCheck.isChecked()&&MatematicasCheck.isChecked()&&ArteCheck.isChecked()){
+                    TodosCheck.setChecked(true);
+                }
+
+
+
+        }else{
 
      Medio.setChecked(true);
      CheatsScroll.setVisibility(View.INVISIBLE);
      CheatsText.setVisibility(View.INVISIBLE);
-     CheatsSwitch.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View v) {
-             if (CheatsSwitch.isChecked()) {
-                 CheatsScroll.setVisibility(View.VISIBLE);
-                 CheatsText.setVisibility(View.VISIBLE);
-                 CheatsScroll.setValue(3);
-             } else {
-                 CheatsScroll.setVisibility(View.INVISIBLE);
-                 CheatsText.setVisibility(View.INVISIBLE);
-             }
-         }
-     });
+
+        }
     }
 @Override
 protected void onSaveInstanceState(Bundle outState) {
     super.onSaveInstanceState(outState);
-    outState.putBoolean(CHEAT_STRING, CHEAT);
+    outState.putBoolean("cheat", CheatsSwitch.isChecked());
+    outState.putInt("cheat_num", CheatsScroll.getValue());
+
 }
     }

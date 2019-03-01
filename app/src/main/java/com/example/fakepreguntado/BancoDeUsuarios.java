@@ -6,13 +6,13 @@ import java.util.List;
 public class BancoDeUsuarios {
     public List<Usuario> getAllUsers() {
         List<Usuario> usuarios = new ArrayList<>();
-        usuarios.add(new Usuario(1,"AAA",89,false));
-        usuarios.add(new Usuario(2,"ABA",85,true));
-        usuarios.add(new Usuario(3,"ACA",65,false));
-        usuarios.add(new Usuario(4,"ADA",61,true));
-        usuarios.add(new Usuario(5,"AEA",68,true));
-        usuarios.add(new Usuario(6,"AFA",80,false));
-        usuarios.add(new Usuario(7,"AGA",84,false));
+        usuarios.add(new Usuario(1,"AAA",20,false));
+        usuarios.add(new Usuario(2,"ABA",15,true));
+        usuarios.add(new Usuario(3,"ACA",10,false));
+        usuarios.add(new Usuario(4,"ADA",21,true));
+        usuarios.add(new Usuario(5,"AEA",3,true));
+        usuarios.add(new Usuario(6,"AFA",2,false));
+        usuarios.add(new Usuario(7,"AGA",1,false));
         return usuarios;
     }
 

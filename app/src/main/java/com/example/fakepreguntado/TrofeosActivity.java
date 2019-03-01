@@ -43,11 +43,17 @@ public class TrofeosActivity extends AppCompatActivity {
     public String playerName = "";
     public int Puntaje = 0;
     public boolean Cheatstate = false;
-
+    public boolean State = false;
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trophies);
+
+       if(savedInstanceState!=null){
+           State=savedInstanceState.getBoolean("state");
+           if(State){
+           return;}
+       }
 
         endTrophy = findViewById(R.id.image_trophies);
         primerLugar = findViewById(R.id.primer_lugar);
@@ -58,19 +64,24 @@ public class TrofeosActivity extends AppCompatActivity {
         sextoLugar = findViewById(R.id.sexto_lugar);
 
         final Bundle bundle = this.getIntent().getExtras();
+
+        Jugadores=bundle.getParcelableArrayList(JUGADORES);
+         trofeosActivityModel = ViewModelProviders.of(TrofeosActivity.this).get(TrofeosActivityModel.class);
+        trofeosActivityModel.setPlayer(bundle.<Usuario>getParcelableArrayList("JUGADORES"));
+        Cheatstate = bundle.getBoolean("user_cheater");
+        Puntaje= bundle.getInt("puntaje");
+
         if (bundle.getBoolean(PROSCEDENCES_ACTIVITY)&&Jugadores==null) {
-            trofeosActivityModel = ViewModelProviders.of(TrofeosActivity.this).get(TrofeosActivityModel.class);
             trofeosActivityModel.loadHonestScores(null);
-            primerLugar.setText("1er Lugar: " + trofeosActivityModel.getHonestUserName(0));
-            segundoLugar.setText("2do Lugar: " + trofeosActivityModel.getHonestUserName(1));
-            tercerLugar.setText("3er Lugar: " + trofeosActivityModel.getHonestUserName(2));
+            primerLugar.setText("1er Lugar: " + trofeosActivityModel.getHonestUserName(0)+" "+trofeosActivityModel.getHonestPunt(0));
+            segundoLugar.setText("2do Lugar: " + trofeosActivityModel.getHonestUserName(1)+" "+trofeosActivityModel.getHonestPunt(1));
+            tercerLugar.setText("3er Lugar: " + trofeosActivityModel.getHonestUserName(2)+" "+trofeosActivityModel.getHonestPunt(2));
             trofeosActivityModel.loadMixedScores(trofeosActivityModel.highestHonestScores.get(0),
                     trofeosActivityModel.highestHonestScores.get(1),
                     trofeosActivityModel.highestHonestScores.get(2));
-            cuartoLugar.setText("4to Lugar: " + trofeosActivityModel.highestMixedScores.get(0).getName());
-            quintoLugar.setText("5to Lugar: " + trofeosActivityModel.highestMixedScores.get(1).getName());
-            sextoLugar.setText("6to Lugar: " + trofeosActivityModel.highestMixedScores.get(2).getName());
-
+            cuartoLugar.setText("4to Lugar: " + trofeosActivityModel.highestMixedScores.get(0).getName()+" "+trofeosActivityModel.highestMixedScores.get(0).getPuntajeMax());
+            quintoLugar.setText("5to Lugar: " + trofeosActivityModel.highestMixedScores.get(1).getName()+" "+trofeosActivityModel.highestMixedScores.get(0).getPuntajeMax());
+            sextoLugar.setText("6to Lugar: " + trofeosActivityModel.highestMixedScores.get(2).getName()+" "+trofeosActivityModel.highestMixedScores.get(0).getPuntajeMax());
             if (trofeosActivityModel.highestMixedScores.get(0).getCheatStatus()) {
                 cuartoLugar.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_cheater_24dp, 0);
             }
@@ -90,18 +101,15 @@ public class TrofeosActivity extends AppCompatActivity {
                 endTrophy.setColorFilter(Color.rgb(255, 215, 0));
             }
         } else if (bundle.getBoolean(PROSCEDENCES_ACTIVITY) && Jugadores!=null) {
-            trofeosActivityModel = ViewModelProviders.of(TrofeosActivity.this).get(TrofeosActivityModel.class);
-            Jugadores = bundle.getParcelableArrayList(JUGADORES);
-            trofeosActivityModel.loadHonestScores(Jugadores);
-            primerLugar.setText("1er Lugar: " + trofeosActivityModel.getHonestUserName(0));
-            segundoLugar.setText("2do Lugar: " + trofeosActivityModel.getHonestUserName(1));
-            tercerLugar.setText("3er Lugar: " + trofeosActivityModel.getHonestUserName(2));
+            primerLugar.setText("1er Lugar: " + trofeosActivityModel.getHonestUserName(0)+" "+trofeosActivityModel.getHonestPunt(0));
+            segundoLugar.setText("2do Lugar: " + trofeosActivityModel.getHonestUserName(1)+" "+trofeosActivityModel.getHonestPunt(1));
+            tercerLugar.setText("3er Lugar: " + trofeosActivityModel.getHonestUserName(2)+" "+trofeosActivityModel.getHonestPunt(2));
             trofeosActivityModel.loadMixedScores(trofeosActivityModel.highestHonestScores.get(0),
                     trofeosActivityModel.highestHonestScores.get(1),
                     trofeosActivityModel.highestHonestScores.get(2));
-            cuartoLugar.setText("4to Lugar: " + trofeosActivityModel.highestMixedScores.get(0).getName());
-            quintoLugar.setText("5to Lugar: " + trofeosActivityModel.highestMixedScores.get(1).getName());
-            sextoLugar.setText("6to Lugar: " + trofeosActivityModel.highestMixedScores.get(2).getName());
+            cuartoLugar.setText("4to Lugar: " + trofeosActivityModel.highestMixedScores.get(0).getName()+" "+trofeosActivityModel.highestMixedScores.get(0).getPuntajeMax());
+            quintoLugar.setText("5to Lugar: " + trofeosActivityModel.highestMixedScores.get(1).getName()+" "+trofeosActivityModel.highestMixedScores.get(0).getPuntajeMax());
+            sextoLugar.setText("6to Lugar: " + trofeosActivityModel.highestMixedScores.get(2).getName()+" "+trofeosActivityModel.highestMixedScores.get(0).getPuntajeMax());
             if (trofeosActivityModel.highestMixedScores.get(0).getCheatStatus()) {
                 cuartoLugar.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_cheater_24dp, 0);
             }
@@ -121,88 +129,87 @@ public class TrofeosActivity extends AppCompatActivity {
                 endTrophy.setColorFilter(Color.rgb(255, 215, 0));
             }
         } else {
-            LinearLayout LL = new LinearLayout(TrofeosActivity.this);
-            LL.setOrientation(LinearLayout.HORIZONTAL);
-            final NumberPicker letras = new NumberPicker(TrofeosActivity.this);
-            letras.setMaxValue(25);
-            letras.setMinValue(0);
-            letras.setDisplayedValues(new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N"
-                    , "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"});
+            if(!State) {
+                LinearLayout LL = new LinearLayout(TrofeosActivity.this);
 
-            final NumberPicker letras2 = new NumberPicker(TrofeosActivity.this);
-            letras2.setMaxValue(25);
-            letras2.setMinValue(0);
-            letras2.setDisplayedValues(new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N"
-                    , "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"});
+                LL.setOrientation(LinearLayout.HORIZONTAL);
+                final NumberPicker letras = new NumberPicker(TrofeosActivity.this);
+                letras.setMaxValue(25);
+                letras.setMinValue(0);
+                letras.setDisplayedValues(new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N"
+                        , "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"});
 
-            final NumberPicker letras3 = new NumberPicker(TrofeosActivity.this);
-            letras3.setMaxValue(25);
-            letras3.setMinValue(0);
-            letras3.setDisplayedValues(new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N"
-                    , "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"});
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(50, 50);
-            params.gravity = Gravity.CENTER;
+                final NumberPicker letras2 = new NumberPicker(TrofeosActivity.this);
+                letras2.setMaxValue(25);
+                letras2.setMinValue(0);
+                letras2.setDisplayedValues(new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N"
+                        , "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"});
 
-            LinearLayout.LayoutParams letrasparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            letrasparams.weight = 1;
-            LL.setLayoutParams(params);
-            LL.addView(letras, letrasparams);
-            LL.addView(letras2, letrasparams);
-            LL.addView(letras3, letrasparams);
+                final NumberPicker letras3 = new NumberPicker(TrofeosActivity.this);
+                letras3.setMaxValue(25);
+                letras3.setMinValue(0);
+                letras3.setDisplayedValues(new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N"
+                        , "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"});
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(50, 50);
+                params.gravity = Gravity.CENTER;
 
-            AlertDialog.Builder nameChooser = new AlertDialog.Builder(TrofeosActivity.this);
-            nameChooser.setTitle("JUGADOR");
-            nameChooser.setMessage("Elige un nombre de 3 letras");
-            nameChooser.setView(LL);
-            nameChooser.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    trofeosActivityModel = ViewModelProviders.of(TrofeosActivity.this).get(TrofeosActivityModel.class);
-                    playerName = passNameFromDialog(letras.getValue(), letras2.getValue(), letras3.getValue());
-                    Jugadores=bundle.getParcelableArrayList(JUGADORES);
-                    Puntaje = bundle.getInt(PUNTAJE_FINAL);
-                    Bundle parametros = new Bundle();
-                    Puntaje= parametros.getInt("puntaje");
-                    Cheatstate = bundle.getBoolean(CHEAT_STATE);
-                    if (savedInstanceState == null) {
-                        Jugadores = new ArrayList<>();
-                        JugadorActual = new Usuario(trofeosActivityModel.getPlayersSize(Jugadores.size()), playerName, Puntaje, Cheatstate);
-                        Jugadores.add(JugadorActual);
-                    } else {
-                        JugadorActual = new Usuario(trofeosActivityModel.getPlayersSize(Jugadores.size()), playerName, Puntaje, Cheatstate);
-                        Jugadores.add(JugadorActual);
+                LinearLayout.LayoutParams letrasparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                letrasparams.weight = 1;
+                LL.setLayoutParams(params);
+                LL.addView(letras, letrasparams);
+                LL.addView(letras2, letrasparams);
+                LL.addView(letras3, letrasparams);
+
+                AlertDialog.Builder nameChooser = new AlertDialog.Builder(TrofeosActivity.this);
+                nameChooser.setTitle("JUGADOR");
+                nameChooser.setMessage("Elige un nombre de 3 letras");
+                nameChooser.setView(LL);
+                nameChooser.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                         playerName = passNameFromDialog(letras.getValue(), letras2.getValue(), letras3.getValue());
+                   if (Jugadores==null) {
+                            Jugadores = new ArrayList<>();
+                            JugadorActual = new Usuario(trofeosActivityModel.getPlayersSize(0), playerName, Puntaje, Cheatstate);
+                            Jugadores.add(JugadorActual);
+                        } else {
+                            //  Jugadores = bundle.getParcelableArrayList(JUGADORES);
+                            JugadorActual = new Usuario(trofeosActivityModel.getPlayersSize(Jugadores.size()), playerName, Puntaje, Cheatstate);
+                            Jugadores.add(JugadorActual);
+                        }
+                        trofeosActivityModel.loadHonestScores(Jugadores);
+                        primerLugar.setText("1er Lugar: " + trofeosActivityModel.getHonestUserName(0)+" "+trofeosActivityModel.getHonestPunt(0));
+                        segundoLugar.setText("2do Lugar: " + trofeosActivityModel.getHonestUserName(1)+" "+trofeosActivityModel.getHonestPunt(1));
+                        tercerLugar.setText("3er Lugar: " + trofeosActivityModel.getHonestUserName(2)+" "+trofeosActivityModel.getHonestPunt(2));
+                        trofeosActivityModel.loadMixedScores(trofeosActivityModel.highestHonestScores.get(0),
+                                trofeosActivityModel.highestHonestScores.get(1),
+                                trofeosActivityModel.highestHonestScores.get(2));
+                        cuartoLugar.setText("4to Lugar: " + trofeosActivityModel.highestMixedScores.get(0).getName()+" "+trofeosActivityModel.highestMixedScores.get(0).getPuntajeMax());
+                        quintoLugar.setText("5to Lugar: " + trofeosActivityModel.highestMixedScores.get(1).getName()+" "+trofeosActivityModel.highestMixedScores.get(0).getPuntajeMax());
+                        sextoLugar.setText("6to Lugar: " + trofeosActivityModel.highestMixedScores.get(2).getName()+" "+trofeosActivityModel.highestMixedScores.get(0).getPuntajeMax());
+                        if (trofeosActivityModel.highestMixedScores.get(0).getCheatStatus()) {
+                            cuartoLugar.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_cheater_24dp, 0);
+                        }
+                        if (trofeosActivityModel.highestMixedScores.get(1).getCheatStatus()) {
+                            quintoLugar.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_cheater_24dp, 0);
+                        }
+                        if (trofeosActivityModel.highestMixedScores.get(2).getCheatStatus()) {
+                            sextoLugar.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_cheater_24dp, 0);
+                        }
+                        if (Puntaje < 15) {
+                            endTrophy.setColorFilter(Color.rgb(153, 101, 21));
+                        } else if (Puntaje >= 15 && Puntaje < 30) {
+                            endTrophy.setColorFilter(Color.rgb(212, 175, 55));
+                        } else if (Puntaje >= 30 && Puntaje < 45) {
+                            endTrophy.setColorFilter(Color.rgb(197, 179, 88));
+                        } else if (Puntaje >= 45) {
+                            endTrophy.setColorFilter(Color.rgb(255, 215, 0));
+                        }
+                        State = true;
                     }
-                    trofeosActivityModel.loadHonestScores(Jugadores);
-                    primerLugar.setText("1er Lugar: " + trofeosActivityModel.getHonestUserName(0));
-                    segundoLugar.setText("2do Lugar: " + trofeosActivityModel.getHonestUserName(1));
-                    tercerLugar.setText("3er Lugar: " + trofeosActivityModel.getHonestUserName(2));
-                    trofeosActivityModel.loadMixedScores(trofeosActivityModel.highestHonestScores.get(0),
-                            trofeosActivityModel.highestHonestScores.get(1),
-                            trofeosActivityModel.highestHonestScores.get(2));
-                    cuartoLugar.setText("4to Lugar: " + trofeosActivityModel.highestMixedScores.get(0).getName());
-                    quintoLugar.setText("5to Lugar: " + trofeosActivityModel.highestMixedScores.get(1).getName());
-                    sextoLugar.setText("6to Lugar: " + trofeosActivityModel.highestMixedScores.get(2).getName());
-                    if (trofeosActivityModel.highestMixedScores.get(0).getCheatStatus()) {
-                        cuartoLugar.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_cheater_24dp, 0);
-                    }
-                    if (trofeosActivityModel.highestMixedScores.get(1).getCheatStatus()) {
-                        quintoLugar.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_cheater_24dp, 0);
-                    }
-                    if (trofeosActivityModel.highestMixedScores.get(2).getCheatStatus()) {
-                        sextoLugar.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_cheater_24dp, 0);
-                    }
-                    if (Puntaje < 15) {
-                        endTrophy.setColorFilter(Color.rgb(153, 101, 21));
-                    } else if (Puntaje >= 15 && Puntaje < 30) {
-                        endTrophy.setColorFilter(Color.rgb(212, 175, 55));
-                    } else if (Puntaje >= 30 && Puntaje < 45) {
-                        endTrophy.setColorFilter(Color.rgb(197, 179, 88));
-                    } else if (Puntaje >= 45) {
-                        endTrophy.setColorFilter(Color.rgb(255, 215, 0));
-                    }
-                }
-            });
-            nameChooser.show();
+                });
+                nameChooser.show();
+            }
             endTrophy.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -213,11 +220,50 @@ public class TrofeosActivity extends AppCompatActivity {
             });
         }
     }
-
+    @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+        outState.putBoolean("state",State);
+        outState.putParcelableArrayList(JUGADORES,Jugadores);
+        outState.getBoolean("user_cheater",Cheatstate);
+        outState.getInt("puntaje",Puntaje);
     }
-
+   @Override
+   protected void onRestoreInstanceState(Bundle savedInstanceState){
+       super.onRestoreInstanceState(savedInstanceState);
+       Cheatstate = savedInstanceState.getBoolean("user_cheater");
+       Puntaje= savedInstanceState.getInt("puntaje");
+       State=savedInstanceState.getBoolean("state");
+       Jugadores=savedInstanceState.getParcelableArrayList("JUGADORES");
+       trofeosActivityModel.loadHonestScores(Jugadores);
+       primerLugar.setText("1er Lugar: " + trofeosActivityModel.getHonestUserName(0)+" "+trofeosActivityModel.getHonestPunt(0));
+       segundoLugar.setText("2do Lugar: " + trofeosActivityModel.getHonestUserName(1)+" "+trofeosActivityModel.getHonestPunt(1));
+       tercerLugar.setText("3er Lugar: " + trofeosActivityModel.getHonestUserName(2)+" "+trofeosActivityModel.getHonestPunt(2));
+       trofeosActivityModel.loadMixedScores(trofeosActivityModel.highestHonestScores.get(0),
+               trofeosActivityModel.highestHonestScores.get(1),
+               trofeosActivityModel.highestHonestScores.get(2));
+       cuartoLugar.setText("4to Lugar: " + trofeosActivityModel.highestMixedScores.get(0).getName()+" "+trofeosActivityModel.highestMixedScores.get(0).getPuntajeMax());
+       quintoLugar.setText("5to Lugar: " + trofeosActivityModel.highestMixedScores.get(1).getName()+" "+trofeosActivityModel.highestMixedScores.get(0).getPuntajeMax());
+       sextoLugar.setText("6to Lugar: " + trofeosActivityModel.highestMixedScores.get(2).getName()+" "+trofeosActivityModel.highestMixedScores.get(0).getPuntajeMax());
+       if (trofeosActivityModel.highestMixedScores.get(0).getCheatStatus()) {
+           cuartoLugar.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_cheater_24dp, 0);
+       }
+       if (trofeosActivityModel.highestMixedScores.get(1).getCheatStatus()) {
+           quintoLugar.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_cheater_24dp, 0);
+       }
+       if (trofeosActivityModel.highestMixedScores.get(2).getCheatStatus()) {
+           sextoLugar.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_cheater_24dp, 0);
+       }
+       if (Puntaje < 15) {
+           endTrophy.setColorFilter(Color.rgb(153, 101, 21));
+       } else if (Puntaje >= 15 && Puntaje < 30) {
+           endTrophy.setColorFilter(Color.rgb(212, 175, 55));
+       } else if (Puntaje >= 30 && Puntaje < 45) {
+           endTrophy.setColorFilter(Color.rgb(197, 179, 88));
+       } else if (Puntaje >= 45) {
+           endTrophy.setColorFilter(Color.rgb(255, 215, 0));
+       }
+   }
     @Override
     public void onBackPressed() {
         super.onBackPressed();

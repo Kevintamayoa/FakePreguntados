@@ -83,6 +83,52 @@ public class form_opciones extends AppCompatActivity {
                     CienciasCheck.setChecked(false);
                     DeportesCheck.setChecked(false);
                 }
+                int count = 0;
+                if (GeografiaCheck.isChecked()) {
+                    count++;
+                }
+                if (HistoriaCheck.isChecked()) {
+                    count++;
+                }
+                if (ArteCheck.isChecked()) {
+                    count++;
+                }
+                if (EntretenimientoCheck.isChecked()) {
+                    count++;
+                }
+                if (IdiomasCheck.isChecked()) {
+                    count++;
+                }
+                if (MatematicasCheck.isChecked()) {
+                    count++;
+                }
+                if (CienciasCheck.isChecked()) {
+                    count++;
+                }
+                if (DeportesCheck.isChecked()) {
+                    count++;
+                }
+                int val=0;
+                if(Dificil.isChecked()){
+                    val=5;
+                }else if(Medio.isChecked()){
+                    val=4;
+                }else{
+                    val=2;
+                }
+                if (count * val == 0) {
+                    PreguntaScroll.setValue(1);
+                    PreguntaScroll.setMaxValue(1);
+                } else {
+                    if (PreguntaScroll.getValue() > count * val) {
+                        PreguntaScroll.setValue(count * val);
+                    }
+                    PreguntaScroll.setMaxValue(count * val);
+                }
+                if (CheatsScroll.getValue() > PreguntaScroll.getValue()) {
+                    CheatsScroll.setValue(PreguntaScroll.getValue());
+                }
+                CheatsScroll.setMaxValue(PreguntaScroll.getValue());
             }
         });
         Facil.setOnClickListener(new View.OnClickListener() {
@@ -248,14 +294,22 @@ public class form_opciones extends AppCompatActivity {
                 if (DeportesCheck.isChecked()) {
                     count++;
                 }
-                if (count * 5 == 0) {
+                int val=0;
+                if(Dificil.isChecked()){
+                    val=5;
+                }else if(Medio.isChecked()){
+                    val=4;
+                }else{
+                    val=2;
+                }
+                if (count * val == 0) {
                     PreguntaScroll.setValue(1);
                     PreguntaScroll.setMaxValue(1);
                 } else {
-                    if (PreguntaScroll.getValue() > count * 5) {
-                        PreguntaScroll.setValue(count * 5);
+                    if (PreguntaScroll.getValue() > count * val) {
+                        PreguntaScroll.setValue(count * val);
                     }
-                    PreguntaScroll.setMaxValue(count * 5);
+                    PreguntaScroll.setMaxValue(count * val);
                 }
                 if (CheatsScroll.getValue() > PreguntaScroll.getValue()) {
                     CheatsScroll.setValue(PreguntaScroll.getValue());
@@ -291,14 +345,22 @@ public class form_opciones extends AppCompatActivity {
                 if (DeportesCheck.isChecked()) {
                     count++;
                 }
-                if (count * 5 == 0) {
+                int val=0;
+                if(Dificil.isChecked()){
+                    val=5;
+                }else if(Medio.isChecked()){
+                    val=4;
+                }else{
+                    val=2;
+                }
+                if (count * val == 0) {
                     PreguntaScroll.setValue(1);
                     PreguntaScroll.setMaxValue(1);
                 } else {
-                    if (PreguntaScroll.getValue() > count * 5) {
-                        PreguntaScroll.setValue(count * 5);
+                    if (PreguntaScroll.getValue() > count * val) {
+                        PreguntaScroll.setValue(count * val);
                     }
-                    PreguntaScroll.setMaxValue(count * 5);
+                    PreguntaScroll.setMaxValue(count * val);
                 }
                 if (CheatsScroll.getValue() > PreguntaScroll.getValue()) {
                     CheatsScroll.setValue(PreguntaScroll.getValue());
@@ -334,14 +396,22 @@ public class form_opciones extends AppCompatActivity {
                 if (DeportesCheck.isChecked()) {
                     count++;
                 }
-                if (count * 5 == 0) {
+                int val=0;
+                if(Dificil.isChecked()){
+                    val=5;
+                }else if(Medio.isChecked()){
+                    val=4;
+                }else{
+                    val=2;
+                }
+                if (count * val == 0) {
                     PreguntaScroll.setValue(1);
                     PreguntaScroll.setMaxValue(1);
                 } else {
-                    if (PreguntaScroll.getValue() > count * 5) {
-                        PreguntaScroll.setValue(count * 5);
+                    if (PreguntaScroll.getValue() > count * val) {
+                        PreguntaScroll.setValue(count * val);
                     }
-                    PreguntaScroll.setMaxValue(count * 5);
+                    PreguntaScroll.setMaxValue(count * val);
                 }
                 if (CheatsScroll.getValue() > PreguntaScroll.getValue()) {
                     CheatsScroll.setValue(PreguntaScroll.getValue());
@@ -377,14 +447,22 @@ public class form_opciones extends AppCompatActivity {
                 if (DeportesCheck.isChecked()) {
                     count++;
                 }
-                if (count * 5 == 0) {
+                int val=0;
+                if(Dificil.isChecked()){
+                    val=5;
+                }else if(Medio.isChecked()){
+                    val=4;
+                }else{
+                    val=2;
+                }
+                if (count * val == 0) {
                     PreguntaScroll.setValue(1);
                     PreguntaScroll.setMaxValue(1);
                 } else {
-                    if (PreguntaScroll.getValue() > count * 5) {
-                        PreguntaScroll.setValue(count * 5);
+                    if (PreguntaScroll.getValue() > count * val) {
+                        PreguntaScroll.setValue(count * val);
                     }
-                    PreguntaScroll.setMaxValue(count * 5);
+                    PreguntaScroll.setMaxValue(count * val);
                 }
                 if (CheatsScroll.getValue() > PreguntaScroll.getValue()) {
                     CheatsScroll.setValue(PreguntaScroll.getValue());
@@ -420,14 +498,22 @@ public class form_opciones extends AppCompatActivity {
                 if (DeportesCheck.isChecked()) {
                     count++;
                 }
-                if (count * 5 == 0) {
+                int val=0;
+                if(Dificil.isChecked()){
+                    val=5;
+                }else if(Medio.isChecked()){
+                    val=4;
+                }else{
+                    val=2;
+                }
+                if (count * val == 0) {
                     PreguntaScroll.setValue(1);
                     PreguntaScroll.setMaxValue(1);
                 } else {
-                    if (PreguntaScroll.getValue() > count * 5) {
-                        PreguntaScroll.setValue(count * 5);
+                    if (PreguntaScroll.getValue() > count * val) {
+                        PreguntaScroll.setValue(count * val);
                     }
-                    PreguntaScroll.setMaxValue(count * 5);
+                    PreguntaScroll.setMaxValue(count * val);
                 }
                 if (CheatsScroll.getValue() > PreguntaScroll.getValue()) {
                     CheatsScroll.setValue(PreguntaScroll.getValue());
@@ -463,14 +549,22 @@ public class form_opciones extends AppCompatActivity {
                 if (DeportesCheck.isChecked()) {
                     count++;
                 }
-                if (count * 5 == 0) {
+                int val=0;
+                if(Dificil.isChecked()){
+                    val=5;
+                }else if(Medio.isChecked()){
+                    val=4;
+                }else{
+                    val=2;
+                }
+                if (count * val == 0) {
                     PreguntaScroll.setValue(1);
                     PreguntaScroll.setMaxValue(1);
                 } else {
-                    if (PreguntaScroll.getValue() > count * 5) {
-                        PreguntaScroll.setValue(count * 5);
+                    if (PreguntaScroll.getValue() > count * val) {
+                        PreguntaScroll.setValue(count * val);
                     }
-                    PreguntaScroll.setMaxValue(count * 5);
+                    PreguntaScroll.setMaxValue(count * val);
                 }
                 if (CheatsScroll.getValue() > PreguntaScroll.getValue()) {
                     CheatsScroll.setValue(PreguntaScroll.getValue());
@@ -506,14 +600,22 @@ public class form_opciones extends AppCompatActivity {
                 if (DeportesCheck.isChecked()) {
                     count++;
                 }
-                if (count * 5 == 0) {
+                int val=0;
+                if(Dificil.isChecked()){
+                    val=5;
+                }else if(Medio.isChecked()){
+                    val=4;
+                }else{
+                    val=2;
+                }
+                if (count * val == 0) {
                     PreguntaScroll.setValue(1);
                     PreguntaScroll.setMaxValue(1);
                 } else {
-                    if (PreguntaScroll.getValue() > count * 5) {
-                        PreguntaScroll.setValue(count * 5);
+                    if (PreguntaScroll.getValue() > count * val) {
+                        PreguntaScroll.setValue(count * val);
                     }
-                    PreguntaScroll.setMaxValue(count * 5);
+                    PreguntaScroll.setMaxValue(count * val);
                 }
                 if (CheatsScroll.getValue() > PreguntaScroll.getValue()) {
                     CheatsScroll.setValue(PreguntaScroll.getValue());
@@ -549,14 +651,22 @@ public class form_opciones extends AppCompatActivity {
                 if (DeportesCheck.isChecked()) {
                     count++;
                 }
-                if (count * 5 == 0) {
+                int val=0;
+                if(Dificil.isChecked()){
+                    val=5;
+                }else if(Medio.isChecked()){
+                    val=4;
+                }else{
+                    val=2;
+                }
+                if (count * val == 0) {
                     PreguntaScroll.setValue(1);
                     PreguntaScroll.setMaxValue(1);
                 } else {
-                    if (PreguntaScroll.getValue() > count * 5) {
-                        PreguntaScroll.setValue(count * 5);
+                    if (PreguntaScroll.getValue() > count * val) {
+                        PreguntaScroll.setValue(count * val);
                     }
-                    PreguntaScroll.setMaxValue(count * 5);
+                    PreguntaScroll.setMaxValue(count * val);
                 }
                 if (CheatsScroll.getValue() > PreguntaScroll.getValue()) {
                     CheatsScroll.setValue(PreguntaScroll.getValue());
@@ -710,7 +820,23 @@ public class form_opciones extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         outState.putBoolean("cheat", CheatsSwitch.isChecked());
         outState.putInt("cheat_num", CheatsScroll.getValue());
-        outState.putBoolean("cheat", CheatsSwitch.isChecked());
+        outState.putInt("preguntas_num", PreguntaScroll.getValue());
+    }
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState){
+        super.onRestoreInstanceState(savedInstanceState);
+        CheatsSwitch.setChecked(savedInstanceState.getBoolean("cheat"));
+        if (CheatsSwitch.isChecked()) {
+            CheatsScroll.setVisibility(View.VISIBLE);
+            CheatsText.setVisibility(View.VISIBLE);
+            CheatsScroll.setValue(savedInstanceState.getInt("cheat_num"));
+        } else {
+            CheatsScroll.setVisibility(View.INVISIBLE);
+            CheatsText.setVisibility(View.INVISIBLE);
+            CheatsScroll.setValue(savedInstanceState.getInt("cheat_num"));
+
+        }
+        PreguntaScroll.setValue(savedInstanceState.getInt("preguntas_num"));
 
     }
 }

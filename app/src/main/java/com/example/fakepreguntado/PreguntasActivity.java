@@ -42,7 +42,7 @@ public class PreguntasActivity extends AppCompatActivity {
     ImageButton correctButton;
     ImageButton incorrectButton;
 
-    public double puntajeTotal=0;
+    public int puntajeTotal=0;
 
     PreguntasActivityModel preguntasActivityModel;
 
@@ -328,8 +328,8 @@ if(question.getAnswer()){
         parmetros.putBoolean("PROSCEDENCES_ACTIVITY",false);
         parmetros.putInt("preguntas_num", PREGUNTAS_NUM);
         parmetros.putInt("dificultad", DIFICULTAD);
-        PreguntasActivityModel aux=new PreguntasActivityModel();
-        parmetros.putInt("puntaje", aux.GetPuntajeTotal());
+        parmetros.putInt("puntaje",preguntasActivityModel.GetPuntajeTotal());
+       // parmetros.putParcelableArrayList("JUGADORES",);
         Intent config=new Intent(PreguntasActivity.this,TrofeosActivity.class);
         config.putExtras(parmetros);
         startActivity(config);

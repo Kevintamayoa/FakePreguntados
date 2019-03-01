@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     public static boolean Matematicas=true;
     public static boolean Ciencias=true;
     public static boolean Deportes=true;
+    public ArrayList<Usuario> Jugadores;
     Button Configbtn;
     Button Playbtn;
     Button Trophiesbtn;
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
           parametros.putBoolean("entretenimiento", Entretenimiento);
           parametros.putBoolean("matematicas", Matematicas);
           parametros.putBoolean("arte", Arte);
+          parametros.putParcelableArrayList("JUGADORES",Jugadores);
           parametros.putInt("preguntas_num",PREGUNTAS_NUM);
           parametros.putInt("dificultad", DIFICULTAD);
           config.putExtras(parametros);
@@ -74,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 parametros.putBoolean("entretenimiento", Entretenimiento);
                 parametros.putBoolean("matematicas", Matematicas);
                 parametros.putBoolean("arte", Arte);
+                parametros.putParcelableArrayList("JUGADORES",Jugadores);
                 parametros.putInt("preguntas_num",PREGUNTAS_NUM);
                 parametros.putInt("dificultad", DIFICULTAD);
                 parametros.putBoolean("PROSCEDENCES_ACTIVITY",true);
@@ -126,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
                 parametros.putBoolean("arte", Arte);
                 parametros.putInt("preguntas_num", PREGUNTAS_NUM);
                 parametros.putInt("dificultad", DIFICULTAD);
+                parametros.putParcelableArrayList("JUGADORES",Jugadores);
                 config.putExtras(parametros);
 
                 startActivity(config);
@@ -148,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
         Arte = parametros.getBoolean("arte");
         PREGUNTAS_NUM = parametros.getInt("preguntas_num");
         DIFICULTAD = parametros.getInt("dificultad");
+        Jugadores = parametros.getParcelableArrayList("JUGADORES");
     }
     }
     public void aceptar() {
@@ -191,6 +196,7 @@ public class MainActivity extends AppCompatActivity {
         parametros.putBoolean("entretenimiento", Entretenimiento);
         parametros.putBoolean("matematicas", Matematicas);
         parametros.putBoolean("arte", Arte);
+        parametros.putParcelableArrayList("JUGADORES",Jugadores);
         parametros.putInt("preguntas_num",PREGUNTAS_NUM);
         parametros.putInt("dificultad", DIFICULTAD);
         config.putExtras(parametros);
@@ -202,23 +208,37 @@ public class MainActivity extends AppCompatActivity {
     @Override
  protected void onSaveInstanceState(Bundle outState) {
      super.onSaveInstanceState(outState);
+        outState.putBoolean("cheat", CHEAT);
+        outState.putInt("cheat_num", CHEAT_NUM);
+        outState.putBoolean("historia", Historia);
+        outState.putBoolean("geografia", Geografia);
+        outState.putBoolean("idiomas", Idiomas);
+        outState.putBoolean("ciencias", Ciencias);
+        outState.putBoolean("deportes", Deportes);
+        outState.putBoolean("entretenimiento", Entretenimiento);
+        outState.putBoolean("matematicas", Matematicas);
+        outState.putBoolean("arte", Arte);
+        outState.putParcelableArrayList("JUGADORES",Jugadores);
+        outState.putInt("preguntas_num",PREGUNTAS_NUM);
+        outState.putInt("dificultad", DIFICULTAD);
  }
-  @Override
-  protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-      super.onActivityResult(requestCode, resultCode, data);
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState){
+        super.onRestoreInstanceState(savedInstanceState);
 
-      switch (requestCode) {
-          case form_opciones.CHEAT_INT:
-              if (resultCode == RESULT_OK) {
-                 //CHEAT data.getBundleExtra(CHEAT_STRING);
-              } else if (resultCode == RESULT_CANCELED) {
+        CHEAT = savedInstanceState.getBoolean("cheat");
+        CHEAT_NUM = savedInstanceState.getInt("cheat_num");
+        Historia = savedInstanceState.getBoolean("historia");
+        Geografia = savedInstanceState.getBoolean("geografia");
+        Idiomas = savedInstanceState.getBoolean("idiomas");
+        Ciencias = savedInstanceState.getBoolean("ciencias");
+        Deportes = savedInstanceState.getBoolean("deportes");
+        Entretenimiento = savedInstanceState.getBoolean("entretenimiento");
+        Matematicas = savedInstanceState.getBoolean("matematicas");
+        Arte = savedInstanceState.getBoolean("arte");
+        PREGUNTAS_NUM = savedInstanceState.getInt("preguntas_num");
+        DIFICULTAD = savedInstanceState.getInt("dificultad");
+        Jugadores = savedInstanceState.getParcelableArrayList("JUGADORES");
+    }
 
-              }
-              break;
-
-          default:
-              // other activities...
-              break;
-      }
-  }
 }

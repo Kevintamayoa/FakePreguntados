@@ -8,6 +8,17 @@ import java.util.Comparator;
 import java.util.List;
 
 public class TrofeosActivityModel extends ViewModel {
+
+    public void setPlayer(List<Usuario> player) {
+        Player = player;
+    }
+
+    public List<Usuario> getPlayer() {
+        return Player;
+    }
+
+    public List<Usuario> Player;
+
     public List<Usuario> highestHonestScores;
     public List<Usuario> highestMixedScores;
     public List<Usuario> newUsers;
@@ -40,6 +51,9 @@ public class TrofeosActivityModel extends ViewModel {
 
     public String getHonestUserName(int i) {
         return highestHonestScores.get(i).getName();
+    }
+    public String getHonestPunt(int i) {
+        return highestHonestScores.get(i).getPuntajeMax()+"";
     }
 
     public void loadMixedScores(Usuario u1, Usuario u2, Usuario u3) {

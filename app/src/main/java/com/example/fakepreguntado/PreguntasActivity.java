@@ -14,6 +14,26 @@ import java.util.List;
 
 
 public class PreguntasActivity extends AppCompatActivity {
+    public static boolean CHEAT=false;
+    public static boolean PARTIDA_CURSO=false;
+    public static  int CHEAT_NUM = 3;
+    public static  int PREGUNTAS_NUM = 15;
+    public static  int DIFICULTAD = 1;
+    public static boolean Geografia=true;
+    public static boolean Historia=true;
+    public static boolean Arte=true;
+    public static boolean Entretenimiento=true;
+    public static boolean Idiomas=true;
+    public static boolean Matematicas=true;
+    public static boolean Ciencias=true;
+    public static boolean Deportes=true;
+    public  static ArrayList<Integer> PREGUNTAS_SESION_INT=new ArrayList<>();
+    public  static List<Question> PREGUNTAS_SESION=new ArrayList<>();
+    public  static ArrayList<String> PREGUNTAS_SESION_STRING=new ArrayList<>();
+    public  static ArrayList<Integer> PREGUNTAS_SESION_STATUS=new ArrayList<>();
+    public  static boolean[] PREGUNTAS_SESION_RESP = new boolean[PREGUNTAS_SESION_INT.size()];
+    public  static ArrayList<Integer> PREGUNTAS_SESION_DIFICULTAD=new ArrayList<>();
+    public  static ArrayList<Integer> PREGUNTAS_SESION_CATEGORIA=new ArrayList<>();
 
     TextView numPregunta;
     Button finPreguntas;

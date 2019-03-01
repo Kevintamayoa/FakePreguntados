@@ -1,6 +1,7 @@
 package com.example.fakepreguntado;
 
 public class Question {
+
     private int id;
     private String pregunta;
     private int status;//status==1 es incorecto, status==2 es correcto
@@ -35,4 +36,5 @@ public class Question {
     public int getDifficulty() {return dificultad;}
 
     public int getCategory(){return categoria;}
+
 }

@@ -22,13 +22,25 @@ public class PreguntasActivityModel extends ViewModel {
         currentQuestionIndex = (currentQuestionIndex == 0) ? preguntas.size() - 1 : currentQuestionIndex - 1;
     }
 
-    public void loadGameQuestions(List<Question> LIST) {
+    public void loadGameQuestions(int num,int dificultad,List<Integer> categorias) {
         if (preguntas == null) {
             currentQuestionIndex = 0;
-
-            preguntas = LIST;
+ BancoDePreguntas bancoDePreguntas=new BancoDePreguntas();
+            preguntas = bancoDePreguntas.getQuestionsByParams(num,dificultad, categorias);
         }
     }
+    public int GetPuntajeTotal() {
+        int puntaje=0;
+        if(preguntas!=null){
+            for(Question obj:preguntas){
+                if(obj.getStatus()==2){
+                    puntaje+=obj.getDifficulty();
+                }
+            }
+        }
+        return puntaje;
+    }
+
 
     public void loadNewUser(boolean cheat){
         if(usuario==null){

@@ -19,8 +19,6 @@ import java.util.List;
 
 public class PreguntasActivity extends AppCompatActivity {
     public static boolean CHEAT=false;
-    public static boolean PARTIDA_CURSO=false;
-    public static boolean PARTIDA_CONTINUADA=false;
     public static  int CHEAT_NUM = 3;
     public static  int PREGUNTAS_NUM = 15;
     public static  int DIFICULTAD = 1;
@@ -34,13 +32,6 @@ public class PreguntasActivity extends AppCompatActivity {
     public static boolean Deportes=true;
     public static boolean USER_CHEATER=false;
     public static  int CHEAT_COUNT = 0;
-    public  static ArrayList<Integer> PREGUNTAS_SESION_INT=new ArrayList<>();
-    public  static List<Question> PREGUNTAS_SESION=new ArrayList<>();
-    public  static ArrayList<String> PREGUNTAS_SESION_STRING=new ArrayList<>();
-    public  static ArrayList<Integer> PREGUNTAS_SESION_STATUS=new ArrayList<>();
-    public  static boolean[] PREGUNTAS_SESION_RESP = new boolean[PREGUNTAS_SESION_INT.size()];
-    public  static ArrayList<Integer> PREGUNTAS_SESION_DIFICULTAD=new ArrayList<>();
-    public  static ArrayList<Integer> PREGUNTAS_SESION_CATEGORIA=new ArrayList<>();
     TextView auxPregunta;
     TextView numPregunta;
     Button finPreguntas;
@@ -59,7 +50,7 @@ public class PreguntasActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preguntas);
-auxPregunta=findViewById(R.id.texto_pregunta_respondida);
+        auxPregunta=findViewById(R.id.texto_pregunta_respondida);
         numPregunta = findViewById(R.id.num_pregunta);
         finPreguntas = findViewById(R.id.endQuizz_btn);
         cheatActivityButton = findViewById(R.id.cheat_activity_button);
@@ -70,12 +61,8 @@ auxPregunta=findViewById(R.id.texto_pregunta_respondida);
         incorrectButton = findViewById(R.id.incorrect_button);
 
         Bundle parametros = this.getIntent().getExtras();
-        PARTIDA_CONTINUADA=parametros.getBoolean("partida_continuada");
-        PARTIDA_CURSO=parametros.getBoolean("partida_curso");
             CHEAT = parametros.getBoolean("cheat");
             CHEAT_NUM=parametros.getInt("cheat_num");
-
-
         Historia=parametros.getBoolean("historia");
             Geografia=parametros.getBoolean("geografia");
             Idiomas=parametros.getBoolean("idiomas");
@@ -86,26 +73,40 @@ auxPregunta=findViewById(R.id.texto_pregunta_respondida);
             Arte= parametros.getBoolean("arte");
             PREGUNTAS_NUM=parametros.getInt("preguntas_num");
             DIFICULTAD=  parametros.getInt("dificultad");
-
-            PREGUNTAS_SESION_RESP=  parametros.getBooleanArray("preguntas_respuestas");
-            PREGUNTAS_SESION_INT=parametros.getIntegerArrayList("preguntas_int") ;
-            PREGUNTAS_SESION_CATEGORIA=parametros.getIntegerArrayList("preguntas_categoria");
-            PREGUNTAS_SESION_DIFICULTAD=parametros.getIntegerArrayList("preguntas_dificultad");
-            PREGUNTAS_SESION_STATUS=parametros.getIntegerArrayList("preguntas_status") ;
-            PREGUNTAS_SESION_STRING=parametros.getStringArrayList("preguntas_string");
-            for(int i=0;i<PREGUNTAS_SESION_INT.size();i++){
-                PREGUNTAS_SESION.add(new Question(PREGUNTAS_SESION_INT.get(i),PREGUNTAS_SESION_STRING.get(i),
-                        PREGUNTAS_SESION_STATUS.get(i),PREGUNTAS_SESION_RESP[i],PREGUNTAS_SESION_DIFICULTAD.get(i),PREGUNTAS_SESION_CATEGORIA.get(i)));
+            if(!CHEAT)
+            {
+                cheatActivityButton.setVisibility(View.INVISIBLE);
             }
-        preguntasActivityModel = ViewModelProviders.of(this).get(PreguntasActivityModel.class);
-        preguntasActivityModel.loadGameQuestions(PREGUNTAS_SESION);
-        CHEAT_COUNT=0;
-        if(PARTIDA_CONTINUADA){
-            CHEAT_COUNT=parametros.getInt("cheat_count");
-            preguntasActivityModel.loadNewUser(USER_CHEATER);}else{
-            preguntasActivityModel.loadNewUser(false);
+        List<Integer> aux2 = new ArrayList<>();
+        if (Historia) {
+            aux2.add(0);
         }
-        int as=CHEAT_NUM-CHEAT_COUNT;
+        if (Geografia) {
+            aux2.add(1);
+        }
+        if (Idiomas) {
+            aux2.add(2);
+        }
+        if (Ciencias) {
+            aux2.add(3);
+        }
+        if (Deportes) {
+            aux2.add(4);
+        }
+        if (Entretenimiento) {
+            aux2.add(5);
+        }
+        if (Matematicas) {
+            aux2.add(6);
+        }
+        if (Arte) {
+            aux2.add(7);
+        }
+
+        preguntasActivityModel = ViewModelProviders.of(this).get(PreguntasActivityModel.class);
+        preguntasActivityModel.loadGameQuestions(PREGUNTAS_NUM,DIFICULTAD,aux2);
+        CHEAT_COUNT=0;
+       int as=CHEAT_NUM-CHEAT_COUNT;
         cheatActivityButton.setText("Cheat: "+as);
         numPregunta.setText(preguntasActivityModel.getCurrentQuestionIndexText());
 
@@ -114,17 +115,7 @@ auxPregunta=findViewById(R.id.texto_pregunta_respondida);
             public void onClick(View v) {
                 boolean as=false;
                 String aux="";
-                for(int i=0;i<PREGUNTAS_SESION_RESP.length;i++){
-if(PREGUNTAS_SESION_STATUS.get(i)==0){
-    if(!as){
-        aux+=i+"";
-    }else{
-        aux+=","+i;
-    }
-    as=true;
 
-}
-                }
                 if(as){
                     AlertDialog.Builder dialogo1 = new AlertDialog.Builder(PreguntasActivity.this);
                     dialogo1.setTitle("Importante");
@@ -148,6 +139,7 @@ if(PREGUNTAS_SESION_STATUS.get(i)==0){
                     dialogo1.setCancelable(false);
                     dialogo1.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialogo1, int id) {
+
                             aceptar();
                         }
                     });
@@ -184,11 +176,17 @@ if(PREGUNTAS_SESION_STATUS.get(i)==0){
                     int as=CHEAT_NUM-CHEAT_COUNT;
                     USER_CHEATER= true;
                     cheatActivityButton.setText("Cheat: "+as);
-                    preguntasActivityModel.PassCheatingStatus();
+                    String res="";
+
+                    //   preguntasActivityModel.PassCheatingStatus();
+                    if(preguntasActivityModel.getCurrentQuestion().getAnswer()){
+                        res="VERDADERO";
+                    }else{
+                        res="FALSO";
+                    }
                 Toast.makeText(PreguntasActivity.this,
-                        "La respuesta correcta es "+
-                                Boolean.toString(preguntasActivityModel.getCurrentQuestion().getAnswer()).toUpperCase(),
-                        Toast.LENGTH_LONG).show();
+                        "La respuesta correcta es "+res,
+                        Toast.LENGTH_SHORT).show();
             }}
         });
 
@@ -208,7 +206,7 @@ if(PREGUNTAS_SESION_STATUS.get(i)==0){
                 if (question.getStatus()==2) {
                     auxPregunta.setText("ACERTASTE!! :) , RESPONDISTE "+res);
                 }else  if (question.getStatus()==1){
-                    auxPregunta.setText("TE EQUIVOCASTE AQUÍ :'(, RESPONDISTE "+res);
+                    auxPregunta.setText(":(, RESPONDISTE "+res);
                 }else{
                     auxPregunta.setText("");
                 }
@@ -250,16 +248,13 @@ if(question.getAnswer()){
                                 Toast.LENGTH_SHORT).show();
                         preguntasActivityModel.setCurrentQuestionStatus(true);
                         auxPregunta.setText("ACERTASTE!! :) , RESPONDISTE: VERDADERO");
-                            PREGUNTAS_SESION_STATUS.set(preguntasActivityModel.getCurrentQuestionIndex(),2);
-
-                    }else{
+                          }else{
                         Toast.makeText(PreguntasActivity.this,
                                 "¡¡INCORRECTO!!",
                                 Toast.LENGTH_SHORT).show();
                         preguntasActivityModel.setCurrentQuestionStatus(false);
                         auxPregunta.setText("TE EQUIVOCASTE AQUÍ :'(, RESPONDISTE: VERDADERO");
 
-                        PREGUNTAS_SESION_STATUS.set(preguntasActivityModel.getCurrentQuestionIndex(),1);
                     }
                 }else{
                    if (question.getStatus()==2) {
@@ -288,9 +283,7 @@ if(question.getAnswer()){
                                 "¡¡CORRECTO!!",
                                 Toast.LENGTH_SHORT).show();
                         preguntasActivityModel.setCurrentQuestionStatus(true);
-
-                        PREGUNTAS_SESION_STATUS.set(preguntasActivityModel.getCurrentQuestionIndex(),2);
-                        auxPregunta.setText("ACERTASTE!! :) , RESPONDISTE: FALSO");
+         auxPregunta.setText("ACERTASTE!! :) , RESPONDISTE: FALSO");
 
                     }else{
                         Toast.makeText(PreguntasActivity.this,
@@ -298,10 +291,7 @@ if(question.getAnswer()){
                                 Toast.LENGTH_SHORT).show();
                         preguntasActivityModel.setCurrentQuestionStatus(false);
                         auxPregunta.setText("TE EQUIVOCASTE AQUÍ :'(, RESPONDISTE: FALSO");
-
-                        PREGUNTAS_SESION_STATUS.set(preguntasActivityModel.getCurrentQuestionIndex(),1);;
-
-                    }
+   }
                 }else{
                     if (question.getStatus()==2) {
                         Toast.makeText(PreguntasActivity.this,
@@ -334,25 +324,37 @@ if(question.getAnswer()){
         parmetros.putBoolean("entretenimiento", Entretenimiento);
         parmetros.putBoolean("matematicas", Matematicas);
         parmetros.putBoolean("arte", Arte);
-        parmetros.putBoolean("partida_curso", PARTIDA_CURSO);
-        parmetros.putBoolean("partida_continuada", PARTIDA_CONTINUADA);
-        parmetros.putBoolean("user_cheater", USER_CHEATER);
-        parmetros.putBooleanArray("preguntas_respuestas",PREGUNTAS_SESION_RESP);
+       parmetros.putBoolean("user_cheater", USER_CHEATER);
+        parmetros.putBoolean("PROSCEDENCES_ACTIVITY",false);
         parmetros.putInt("preguntas_num", PREGUNTAS_NUM);
         parmetros.putInt("dificultad", DIFICULTAD);
-
+        PreguntasActivityModel aux=new PreguntasActivityModel();
+        parmetros.putInt("puntaje", aux.GetPuntajeTotal());
         Intent config=new Intent(PreguntasActivity.this,TrofeosActivity.class);
         config.putExtras(parmetros);
-        config.putIntegerArrayListExtra("preguntas_int",PREGUNTAS_SESION_INT);
-        config.putIntegerArrayListExtra("preguntas_categoria",PREGUNTAS_SESION_CATEGORIA);
-        config.putIntegerArrayListExtra("preguntas_dificultad",PREGUNTAS_SESION_DIFICULTAD);
-        config.putIntegerArrayListExtra("preguntas_status",PREGUNTAS_SESION_STATUS);
-        config.putStringArrayListExtra("preguntas_string",PREGUNTAS_SESION_STRING);
-
         startActivity(config);
     }
     public void aceptar2() {
-
+        Bundle parmetros = new Bundle();
+        parmetros.putBoolean("cheat", CHEAT);
+        parmetros.putInt("cheat_num", CHEAT_NUM);
+        parmetros.putBoolean("historia", Historia);
+        parmetros.putBoolean("geografia", Geografia);
+        parmetros.putBoolean("idiomas", Idiomas);
+        parmetros.putBoolean("ciencias", Ciencias);
+        parmetros.putBoolean("deportes", Deportes);
+        parmetros.putBoolean("entretenimiento", Entretenimiento);
+        parmetros.putBoolean("matematicas", Matematicas);
+        parmetros.putBoolean("arte", Arte);
+        parmetros.putBoolean("user_cheater", USER_CHEATER);
+        parmetros.putBoolean("PROSCEDENCES_ACTIVITY",false);
+        parmetros.putInt("preguntas_num", PREGUNTAS_NUM);
+        parmetros.putInt("dificultad", DIFICULTAD);
+        PreguntasActivityModel aux=new PreguntasActivityModel();
+        parmetros.putInt("puntaje", aux.GetPuntajeTotal());
+        Intent config=new Intent(PreguntasActivity.this,TrofeosActivity.class);
+        config.putExtras(parmetros);
+        startActivity(config);
     }
     @Override
     protected void onSaveInstanceState(Bundle outState) {

@@ -1,5 +1,6 @@
 package com.example.fakepreguntado;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -21,15 +22,7 @@ public class form_opciones extends AppCompatActivity {
     public static final String CHEAT_STRING = "CHEAT_STRING";
     public static final boolean CHEAT = false;
 
-    public static ArrayList<Integer> PREGUNTAS_SESION_INT = new ArrayList<>();
-    public static ArrayList<String> PREGUNTAS_SESION_STRING = new ArrayList<>();
-    public static ArrayList<Integer> PREGUNTAS_SESION_STATUS = new ArrayList<>();
-    public static boolean[] PREGUNTAS_SESION_RESP = new boolean[PREGUNTAS_SESION_INT.size()];
-    public static ArrayList<Integer> PREGUNTAS_SESION_DIFICULTAD = new ArrayList<>();
-    public static ArrayList<Integer> PREGUNTAS_SESION_CATEGORIA = new ArrayList<>();
-    public static boolean PARTIDA_CURSO = false;
-    public static boolean PARTIDA_CONTINUADA = false;
-    public static final int CHEAT_INT = 1;
+     public static final int CHEAT_INT = 1;
     Button AtrasButton;
     CheckBox TodosCheck;
     CheckBox GeografiaCheck;
@@ -47,7 +40,6 @@ public class form_opciones extends AppCompatActivity {
     RadioButton Dificil;
     Switch CheatsSwitch;
     TextView CheatsText;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +59,6 @@ public class form_opciones extends AppCompatActivity {
         CheatsScroll = findViewById(R.id.num_cheats_scroll);
         PreguntaScroll = findViewById(R.id.num_preguntas_scroll);
         Facil = findViewById(R.id.facil_rb);
-        ;
         Medio = findViewById(R.id.media_rb);
         Dificil = findViewById(R.id.dificil_rb);
         TodosCheck.setOnClickListener(new View.OnClickListener() {
@@ -272,7 +263,7 @@ public class form_opciones extends AppCompatActivity {
                 CheatsScroll.setMaxValue(PreguntaScroll.getValue());
             }
         });
-        GeografiaCheck.setOnClickListener(new View.OnClickListener() {
+       GeografiaCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int count = 0;
@@ -619,10 +610,6 @@ public class form_opciones extends AppCompatActivity {
                 parmetros.putBoolean("entretenimiento", EntretenimientoCheck.isChecked());
                 parmetros.putBoolean("matematicas", MatematicasCheck.isChecked());
                 parmetros.putBoolean("arte", ArteCheck.isChecked());
-                parmetros.putBoolean("partida_curso", PARTIDA_CURSO);
-                parmetros.putBoolean("partida_continuada", PARTIDA_CONTINUADA);
-
-                parmetros.putBooleanArray("preguntas_respuestas", PREGUNTAS_SESION_RESP);
                 parmetros.putInt("preguntas_num", PreguntaScroll.getValue());
                 if (Facil.isChecked()) {
                     parmetros.putInt("dificultad", 1);
@@ -635,12 +622,6 @@ public class form_opciones extends AppCompatActivity {
                 }
                 Intent config = new Intent(form_opciones.this, MainActivity.class);
                 config.putExtras(parmetros);
-                config.putIntegerArrayListExtra("preguntas_int", PREGUNTAS_SESION_INT);
-                config.putIntegerArrayListExtra("preguntas_categoria", PREGUNTAS_SESION_CATEGORIA);
-                config.putIntegerArrayListExtra("preguntas_dificultad", PREGUNTAS_SESION_DIFICULTAD);
-                config.putIntegerArrayListExtra("preguntas_status", PREGUNTAS_SESION_STATUS);
-                config.putStringArrayListExtra("preguntas_string", PREGUNTAS_SESION_STRING);
-
                 startActivity(config);
             }
         });
@@ -668,9 +649,7 @@ public class form_opciones extends AppCompatActivity {
             }
         });
         Bundle parametros = this.getIntent().getExtras();
-        PARTIDA_CURSO = parametros.getBoolean("partida_curso");
-        PARTIDA_CONTINUADA = parametros.getBoolean("partida_continuada");
-        if (parametros != null) {
+       if (parametros != null) {
 
             CheatsSwitch.setChecked(parametros.getBoolean("cheat"));
             if (CheatsSwitch.isChecked()) {
@@ -731,6 +710,7 @@ public class form_opciones extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         outState.putBoolean("cheat", CheatsSwitch.isChecked());
         outState.putInt("cheat_num", CheatsScroll.getValue());
+        outState.putBoolean("cheat", CheatsSwitch.isChecked());
 
     }
 }

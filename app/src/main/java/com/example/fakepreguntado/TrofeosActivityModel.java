@@ -10,43 +10,53 @@ import java.util.List;
 public class TrofeosActivityModel extends ViewModel {
     public List<Usuario> highestHonestScores;
     public List<Usuario> highestMixedScores;
-    public Usuario newUser;
+    public List<Usuario> newUsers;
 
-    public void loadHonestScores(Usuario user) {
+    public void loadHonestScores(List<Usuario> auxuser) {
         if (highestHonestScores == null) {
             BancoDeUsuarios bancoDeUsuarios = new BancoDeUsuarios();
-            newUser = user;
             highestHonestScores = bancoDeUsuarios.getHonestUsers();
-            if (!newUser.getCheatStatus()){highestHonestScores.add(newUser);}
+            if (auxuser != null) {
+                newUsers = auxuser;
+                for (Usuario aux : auxuser) {
+                    if (!aux.getCheatStatus()) {
+                        highestHonestScores.add(aux);
+                    }
+                }
+            }
             Collections.sort(highestHonestScores, new Comparator<Usuario>() {
                 @Override
                 public int compare(Usuario o1, Usuario o2) {
-                    return Integer.compare(o2.getPuntajeMax(),o1.getPuntajeMax());
+                    return Integer.compare(o2.getPuntajeMax(), o1.getPuntajeMax());
                 }
             });
         }
     }
 
-    public int getPlayersSize(int i){
-        BancoDeUsuarios bancoDeUsuarios =new BancoDeUsuarios();
-        return bancoDeUsuarios.getAllUsers().size()+i+1;
+    public int getPlayersSize(int i) {
+        BancoDeUsuarios bancoDeUsuarios = new BancoDeUsuarios();
+        return bancoDeUsuarios.getAllUsers().size() + i + 1;
     }
 
-    public String getHonestUserName(int i){
+    public String getHonestUserName(int i) {
         return highestHonestScores.get(i).getName();
     }
 
-    public void loadMixedScores(Usuario u1, Usuario u2, Usuario u3){
-        if(highestMixedScores==null){
+    public void loadMixedScores(Usuario u1, Usuario u2, Usuario u3) {
+        if (highestMixedScores == null) {
             BancoDeUsuarios bancoDeUsuarios = new BancoDeUsuarios();
-            highestMixedScores = bancoDeUsuarios.getMixedUsers(u1,u2,u3);
-            if(newUser.getUserId()!=u1.getUserId()&&newUser.getUserId()!=u2.getUserId()&&newUser.getUserId()!=u3.getUserId()){
-                highestMixedScores.add(newUser);
+            highestMixedScores = bancoDeUsuarios.getMixedUsers(u1, u2, u3);
+            if (newUsers != null) {
+                for (Usuario aux : newUsers) {
+                    if (aux.getUserId() != u1.getUserId() && aux.getUserId() != u2.getUserId() && aux.getUserId() != u3.getUserId()) {
+                        highestMixedScores.add(aux);
+                    }
+                }
             }
             Collections.sort(highestMixedScores, new Comparator<Usuario>() {
                 @Override
                 public int compare(Usuario o1, Usuario o2) {
-                    return Integer.compare(o2.getPuntajeMax(),o1.getPuntajeMax());
+                    return Integer.compare(o2.getPuntajeMax(), o1.getPuntajeMax());
                 }
             });
         }

@@ -20,18 +20,16 @@ import java.util.List;
 public class form_opciones extends AppCompatActivity {
     public static final String CHEAT_STRING="CHEAT_STRING";
     public static final boolean CHEAT=false;
+
+    public  static ArrayList<Integer> PREGUNTAS_SESION_INT=new ArrayList<>();
+    public  static ArrayList<String> PREGUNTAS_SESION_STRING=new ArrayList<>();
+    public  static ArrayList<Integer> PREGUNTAS_SESION_STATUS=new ArrayList<>();
+    public  static boolean[] PREGUNTAS_SESION_RESP = new boolean[PREGUNTAS_SESION_INT.size()];
+    public  static ArrayList<Integer> PREGUNTAS_SESION_DIFICULTAD=new ArrayList<>();
+    public  static ArrayList<Integer> PREGUNTAS_SESION_CATEGORIA=new ArrayList<>();
+    public static boolean PARTIDA_CURSO=false;
+    public static boolean PARTIDA_CONTINUADA=false;
     public static final int CHEAT_INT = 1;
-    public static final int CHEAT_NUM = 3;
-    public static final int PREGUNTAS_NUM = 15;
-    public static final int DIFICULTAD = 1;
-    public static final boolean Geografia=false;
-    public static final boolean Historia=false;
-    public static final boolean Arte=false;
-    public static final boolean Entretenimiento=false;
-    public static final boolean Idiomas=false;
-    public static final boolean Matematicas=false;
-    public static final boolean Ciencias=false;
-    public static final boolean Deportes=false;
     Button AtrasButton;
     CheckBox TodosCheck;
     CheckBox GeografiaCheck;
@@ -617,8 +615,11 @@ public class form_opciones extends AppCompatActivity {
              parmetros.putBoolean("entretenimiento", EntretenimientoCheck.isChecked());
              parmetros.putBoolean("matematicas", MatematicasCheck.isChecked());
              parmetros.putBoolean("arte", ArteCheck.isChecked());
+             parmetros.putBoolean("partida_curso", PARTIDA_CURSO);
+             parmetros.putBoolean("partida_continuada", PARTIDA_CONTINUADA);
 
-             parmetros.putInt("preguntas_num", PreguntaScroll.getValue());
+             parmetros.putBooleanArray("preguntas_respuestas",PREGUNTAS_SESION_RESP);
+              parmetros.putInt("preguntas_num", PreguntaScroll.getValue());
              if(Facil.isChecked()){
                  parmetros.putInt("dificultad", 1);
              } else    if(Medio.isChecked()){
@@ -631,6 +632,12 @@ public class form_opciones extends AppCompatActivity {
              }
             Intent config=new Intent(form_opciones.this,MainActivity.class);
              config.putExtras(parmetros);
+             config.putIntegerArrayListExtra("preguntas_int",PREGUNTAS_SESION_INT);
+             config.putIntegerArrayListExtra("preguntas_categoria",PREGUNTAS_SESION_CATEGORIA);
+             config.putIntegerArrayListExtra("preguntas_dificultad",PREGUNTAS_SESION_DIFICULTAD);
+             config.putIntegerArrayListExtra("preguntas_status",PREGUNTAS_SESION_STATUS);
+             config.putStringArrayListExtra("preguntas_string",PREGUNTAS_SESION_STRING);
+
              startActivity(config);
          }
      });
@@ -658,7 +665,10 @@ public class form_opciones extends AppCompatActivity {
             }
         });
         Bundle parametros = this.getIntent().getExtras();
+        PARTIDA_CURSO= parametros.getBoolean("partida_curso");
+        PARTIDA_CONTINUADA= parametros.getBoolean("partida_continuada");
         if (parametros != null) {
+
             CheatsSwitch.setChecked(parametros.getBoolean("cheat"));
             if(CheatsSwitch.isChecked()){
                 CheatsScroll.setVisibility(View.VISIBLE);

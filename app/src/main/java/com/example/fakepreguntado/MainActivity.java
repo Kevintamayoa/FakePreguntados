@@ -18,6 +18,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     public static boolean CHEAT=false;
     public static boolean PARTIDA_CURSO=false;
+    public static boolean PARTIDA_CONTINUADA=false;
     public static  int CHEAT_NUM = 3;
     public static  int PREGUNTAS_NUM = 15;
     public static  int DIFICULTAD = 1;
@@ -61,6 +62,15 @@ public class MainActivity extends AppCompatActivity {
           parametros.putBoolean("arte", Arte);
           parametros.putInt("preguntas_num",PREGUNTAS_NUM);
           parametros.putInt("dificultad", DIFICULTAD);
+          parametros.putBoolean("partida_curso", PARTIDA_CONTINUADA);
+          parametros.putBoolean("partida_continuada", PARTIDA_CURSO);
+
+          parametros.putBooleanArray("preguntas_respuestas",PREGUNTAS_SESION_RESP);
+          config.putIntegerArrayListExtra("preguntas_int",PREGUNTAS_SESION_INT);
+          config.putIntegerArrayListExtra("preguntas_categoria",PREGUNTAS_SESION_CATEGORIA);
+          config.putIntegerArrayListExtra("preguntas_dificultad",PREGUNTAS_SESION_DIFICULTAD);
+          config.putIntegerArrayListExtra("preguntas_status",PREGUNTAS_SESION_STATUS);
+          config.putStringArrayListExtra("preguntas_string",PREGUNTAS_SESION_STRING);
           config.putExtras(parametros);
           startActivity(config);
       }});
@@ -69,8 +79,11 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent config = new Intent(MainActivity.this, form_opciones.class);
+                PARTIDA_CURSO=true;
+                PARTIDA_CONTINUADA=true;
+                Intent config = new Intent(MainActivity.this, PreguntasActivity.class);
                 Bundle parametros = new Bundle();
+
                 parametros.putBoolean("cheat", CHEAT);
                 parametros.putInt("cheat_num", CHEAT_NUM);
                 parametros.putBoolean("historia", Historia);
@@ -83,7 +96,16 @@ public class MainActivity extends AppCompatActivity {
                 parametros.putBoolean("arte", Arte);
                 parametros.putInt("preguntas_num",PREGUNTAS_NUM);
                 parametros.putInt("dificultad", DIFICULTAD);
+                parametros.putBooleanArray("preguntas_respuestas",PREGUNTAS_SESION_RESP);
+                parametros.putBoolean("partida_curso", PARTIDA_CONTINUADA);
+                parametros.putBoolean("partida_continuada", PARTIDA_CURSO);
                 config.putExtras(parametros);
+                config.putIntegerArrayListExtra("preguntas_int",PREGUNTAS_SESION_INT);
+                config.putIntegerArrayListExtra("preguntas_categoria",PREGUNTAS_SESION_CATEGORIA);
+                config.putIntegerArrayListExtra("preguntas_dificultad",PREGUNTAS_SESION_DIFICULTAD);
+                config.putIntegerArrayListExtra("preguntas_status",PREGUNTAS_SESION_STATUS);
+                config.putStringArrayListExtra("preguntas_string",PREGUNTAS_SESION_STRING);
+
                 startActivity(config);
             }});
 
@@ -150,6 +172,7 @@ aceptar();
                 PREGUNTAS_SESION_RESP[i]=PREGUNTAS_SESION.get(i).getAnswer();
             }
             PARTIDA_CURSO=true;
+            PARTIDA_CONTINUADA=false;
                 Intent config = new Intent(MainActivity.this, PreguntasActivity.class);
                 Bundle parametros = new Bundle();
 
@@ -167,6 +190,7 @@ aceptar();
                 parametros.putInt("dificultad", DIFICULTAD);
               parametros.putBooleanArray("preguntas_respuestas",PREGUNTAS_SESION_RESP);
             parametros.putBoolean("partida_curso", PARTIDA_CURSO);
+    parametros.putBoolean("partida_curso", PARTIDA_CONTINUADA);
             config.putExtras(parametros);
              config.putIntegerArrayListExtra("preguntas_int",PREGUNTAS_SESION_INT);
              config.putIntegerArrayListExtra("preguntas_categoria",PREGUNTAS_SESION_CATEGORIA);

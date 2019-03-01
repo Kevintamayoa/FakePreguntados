@@ -16,6 +16,7 @@ import java.util.List;
 public class PreguntasActivity extends AppCompatActivity {
     public static boolean CHEAT=false;
     public static boolean PARTIDA_CURSO=false;
+    public static boolean PARTIDA_CONTINUADA=false;
     public static  int CHEAT_NUM = 3;
     public static  int PREGUNTAS_NUM = 15;
     public static  int DIFICULTAD = 1;
@@ -62,9 +63,35 @@ public class PreguntasActivity extends AppCompatActivity {
         correctButton = findViewById(R.id.correct_button);
         incorrectButton = findViewById(R.id.incorrect_button);
 
+        Bundle parametros = this.getIntent().getExtras();
+        PARTIDA_CONTINUADA=parametros.getBoolean("partida_continuada");
+        PARTIDA_CURSO=parametros.getBoolean("partida_curso");
+            CHEAT = parametros.getBoolean("cheat");
+            CHEAT_NUM=parametros.getInt("cheat_num");
+            Historia=parametros.getBoolean("historia");
+            Geografia=parametros.getBoolean("geografia");
+            Idiomas=parametros.getBoolean("idiomas");
+            Ciencias= parametros.getBoolean("ciencias");
+            Deportes=parametros.getBoolean("deportes");
+            Entretenimiento=parametros.getBoolean("entretenimiento");
+            Matematicas=parametros.getBoolean("matematicas");
+            Arte= parametros.getBoolean("arte");
+            PREGUNTAS_NUM=parametros.getInt("preguntas_num");
+            DIFICULTAD=  parametros.getInt("dificultad");
+
+            PREGUNTAS_SESION_RESP=  parametros.getBooleanArray("preguntas_respuestas");
+            PREGUNTAS_SESION_INT=parametros.getIntegerArrayList("preguntas_int")      ;
+            PREGUNTAS_SESION_CATEGORIA=parametros.getIntegerArrayList("preguntas_categoria")      ;
+            PREGUNTAS_SESION_DIFICULTAD=parametros.getIntegerArrayList("preguntas_dificultad")      ;
+            PREGUNTAS_SESION_STATUS=parametros.getIntegerArrayList("preguntas_status")      ;
+            PREGUNTAS_SESION_STRING=parametros.getStringArrayList("preguntas_string")      ;
+            for(int i=0;i<PREGUNTAS_SESION_INT.size();i++){
+                PREGUNTAS_SESION.add(new Question(PREGUNTAS_SESION_INT.get(i),PREGUNTAS_SESION_STRING.get(i),
+                        PREGUNTAS_SESION_STATUS.get(i),PREGUNTAS_SESION_RESP[i],PREGUNTAS_SESION_DIFICULTAD.get(i),PREGUNTAS_SESION_CATEGORIA.get(i)));
+            }
 
         preguntasActivityModel = ViewModelProviders.of(this).get(PreguntasActivityModel.class);
-        preguntasActivityModel.loadGameQuestions();
+        preguntasActivityModel.loadGameQuestions(PREGUNTAS_SESION);
         preguntasActivityModel.loadNewUser();
 
         numPregunta.setText(preguntasActivityModel.getCurrentQuestionIndexText());
@@ -164,6 +191,8 @@ public class PreguntasActivity extends AppCompatActivity {
                 }
             }
         });
+
+
     }
 
     @Override

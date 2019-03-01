@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     public static boolean Deportes=false;
     Button Configbtn;
     Button Playbtn;
+    Button Trophies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent play = new Intent(MainActivity.this,PreguntasActivity.class);
                 startActivity(play);
+            }
+        });
+
+        Trophies = findViewById(R.id.puntajes_btn);
+        Trophies.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent trophies = new Intent(MainActivity.this,TrofeosActivity.class);
+                startActivity(trophies);
             }
         });
          Bundle parametros = this.getIntent().getExtras();

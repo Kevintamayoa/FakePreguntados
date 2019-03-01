@@ -37,9 +37,9 @@ public class TrofeosActivity extends AppCompatActivity {
         trofeosActivityModel.loadHonestScores("ABB",70,false);
 
         //endTrophy.setImageTintList();
-        primerLugar.setText(primerLugar.getText()+trofeosActivityModel.highestHonestScores.get(0).getName());
-        segundoLugar.setText(segundoLugar.getText()+trofeosActivityModel.highestHonestScores.get(1).getName());
-        tercerLugar.setText(tercerLugar.getText()+trofeosActivityModel.highestHonestScores.get(2).getName());
+        primerLugar.setText(primerLugar.getText()+trofeosActivityModel.getHonestUserName(0));
+        segundoLugar.setText(segundoLugar.getText()+trofeosActivityModel.getHonestUserName(1));
+        tercerLugar.setText(tercerLugar.getText()+trofeosActivityModel.getHonestUserName(2));
 
         trofeosActivityModel.loadMixedScores(trofeosActivityModel.highestHonestScores.get(0),
                                              trofeosActivityModel.highestHonestScores.get(1),

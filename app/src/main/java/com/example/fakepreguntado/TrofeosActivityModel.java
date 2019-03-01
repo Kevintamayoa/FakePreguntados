@@ -27,6 +27,10 @@ public class TrofeosActivityModel extends ViewModel {
         }
     }
 
+    public String getHonestUserName(int i){
+        return highestHonestScores.get(i).getName();
+    }
+
     public void loadMixedScores(Usuario u1, Usuario u2, Usuario u3){
         if(highestMixedScores==null){
             BancoDeUsuarios bancoDeUsuarios = new BancoDeUsuarios();

@@ -1,9 +1,9 @@
 package com.example.fakepreguntado;
 
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Usuario {
+public class Usuario implements Parcelable {
     private int id;
     private String name;
     private int puntajeMax;
@@ -16,20 +16,65 @@ public class Usuario {
         this.cheat = cheat;
     }
 
-    public int getUserId(){return id;}
+    protected Usuario(Parcel in) {
+        id=in.readInt();
+        name=in.readString();
+        puntajeMax=in.readInt();
+        cheat=in.readInt()==1;
+    }
 
-    public void setUserId(String name){this.name=name;}
+    public static final Parcelable.Creator<Usuario> CREATOR = new Parcelable.Creator<Usuario>() {
+        public Usuario createFromParcel(Parcel in) {
+            return new Usuario(in);
+        }
+        public Usuario[] newArray(int size) {
 
-    public String getName(){return name;}
+            return new Usuario[size];
+        }
+    };
 
-    public void setName(String nam){name=nam;}
+    public int describeContents() {
+        return 0;
+    }
 
-    public int getPuntajeMax(){return puntajeMax;}
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeInt(puntajeMax);
+        dest.writeInt(cheat?1:0);
+    }
 
-    public void setPuntajeMax(int puntaje){puntajeMax=puntaje;}
 
-    public void setCheatingStatus(){cheat = true;}
+    public int getUserId() {
+        return id;
+    }
 
-    public boolean getCheatStatus(){return cheat;}
+    public void setUserId(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String nam) {
+        name = nam;
+    }
+
+    public int getPuntajeMax() {
+        return puntajeMax;
+    }
+
+    public void setPuntajeMax(int puntaje) {
+        puntajeMax = puntaje;
+    }
+
+    public void setCheatingStatus() {
+        cheat = true;
+    }
+
+    public boolean getCheatStatus() {
+        return cheat;
+    }
 
 }

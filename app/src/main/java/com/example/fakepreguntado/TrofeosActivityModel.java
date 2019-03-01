@@ -12,12 +12,12 @@ public class TrofeosActivityModel extends ViewModel {
     public List<Usuario> highestMixedScores;
     public Usuario newUser;
 
-    public void loadHonestScores(String name, int points, boolean cheatState) {
+    public void loadHonestScores(Usuario user) {
         if (highestHonestScores == null) {
             BancoDeUsuarios bancoDeUsuarios = new BancoDeUsuarios();
-            newUser = new Usuario(bancoDeUsuarios.getAllUsers().size()+1, name, points, cheatState);
+            newUser = user;
             highestHonestScores = bancoDeUsuarios.getHonestUsers();
-            if (!cheatState){highestHonestScores.add(newUser);}
+            if (!newUser.getCheatStatus()){highestHonestScores.add(newUser);}
             Collections.sort(highestHonestScores, new Comparator<Usuario>() {
                 @Override
                 public int compare(Usuario o1, Usuario o2) {
@@ -25,6 +25,11 @@ public class TrofeosActivityModel extends ViewModel {
                 }
             });
         }
+    }
+
+    public int getPlayersSize(int i){
+        BancoDeUsuarios bancoDeUsuarios =new BancoDeUsuarios();
+        return bancoDeUsuarios.getAllUsers().size()+i+1;
     }
 
     public String getHonestUserName(int i){

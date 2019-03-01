@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.os.Parcelable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,7 +18,9 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class TrofeosActivity extends AppCompatActivity {
     ImageView endTrophy;
@@ -29,9 +32,12 @@ public class TrofeosActivity extends AppCompatActivity {
     TextView sextoLugar;
 
     TrofeosActivityModel trofeosActivityModel;
-
+    public String JUGADORES = "JUGADORES";
+    public ArrayList<Usuario> Jugadores;
+    public Usuario JugadorActual;
     public String playerName = "";
     public int Puntaje = 0;
+    public boolean Cheatstate = false;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -45,6 +51,7 @@ public class TrofeosActivity extends AppCompatActivity {
         cuartoLugar = findViewById(R.id.cuarto_lugar);
         quintoLugar = findViewById(R.id.quinto_lugar);
         sextoLugar = findViewById(R.id.sexto_lugar);
+
 
         LinearLayout LL = new LinearLayout(TrofeosActivity.this);
         LL.setOrientation(LinearLayout.HORIZONTAL);
@@ -84,7 +91,15 @@ public class TrofeosActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 trofeosActivityModel = ViewModelProviders.of(TrofeosActivity.this).get(TrofeosActivityModel.class);
                 playerName = passNameFromDialog(letras.getValue(), letras2.getValue(), letras3.getValue());
-                trofeosActivityModel.loadHonestScores(playerName, 70, false);
+                if(savedInstanceState==null){
+                    Jugadores = new ArrayList<>();
+                    JugadorActual = new Usuario(trofeosActivityModel.getPlayersSize(Jugadores.size()),playerName,Puntaje,Cheatstate);
+                    Jugadores.add(JugadorActual);
+                }else{
+                    JugadorActual = new Usuario(trofeosActivityModel.getPlayersSize(Jugadores.size()),playerName,Puntaje,Cheatstate);
+                    Jugadores.add(JugadorActual);
+                }
+                trofeosActivityModel.loadHonestScores(JugadorActual);
                 primerLugar.setText("1er Lugar: " + trofeosActivityModel.getHonestUserName(0));
                 segundoLugar.setText("2do Lugar: " + trofeosActivityModel.getHonestUserName(1));
                 tercerLugar.setText("3er Lugar: " + trofeosActivityModel.getHonestUserName(2));
@@ -109,6 +124,7 @@ public class TrofeosActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList(JUGADORES,new ArrayList<Parcelable>(Jugadores));
     }
 
     public String passNameFromDialog(int s1, int s2, int s3) {

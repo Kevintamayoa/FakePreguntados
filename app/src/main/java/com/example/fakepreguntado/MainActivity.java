@@ -11,10 +11,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String CHEATED_FLAG_KEY = "CHEATED_FLAG_KEY";
-    public static final String CHEAT_STRING="CHEAT_STRING";
     public static boolean CHEAT=false;
-    public static  int CHEAT_INT = 1;
+    public static boolean PARTIDA_CURSO=false;
     public static  int CHEAT_NUM = 3;
     public static  int PREGUNTAS_NUM = 15;
     public static  int DIFICULTAD = 1;
@@ -28,14 +26,12 @@ public class MainActivity extends AppCompatActivity {
     public static boolean Deportes=false;
     Button Configbtn;
     Button Playbtn;
-    Button Trophies;
-
+    Button Continuarbtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Configbtn=findViewById(R.id.config_btn);
-
   Configbtn.setOnClickListener(new View.OnClickListener() {
 
       @Override
@@ -57,6 +53,28 @@ public class MainActivity extends AppCompatActivity {
           config.putExtras(parametros);
           startActivity(config);
       }});
+        Continuarbtn.findViewById(R.id.continuar_btn);
+        Continuarbtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent config = new Intent(MainActivity.this, form_opciones.class);
+                Bundle parametros = new Bundle();
+                parametros.putBoolean("cheat", CHEAT);
+                parametros.putInt("cheat_num", CHEAT_NUM);
+                parametros.putBoolean("historia", Historia);
+                parametros.putBoolean("geografia", Geografia);
+                parametros.putBoolean("idiomas", Idiomas);
+                parametros.putBoolean("ciencias", Ciencias);
+                parametros.putBoolean("deportes", Deportes);
+                parametros.putBoolean("entretenimiento", Entretenimiento);
+                parametros.putBoolean("matematicas", Matematicas);
+                parametros.putBoolean("arte", Arte);
+                parametros.putInt("preguntas_num",PREGUNTAS_NUM);
+                parametros.putInt("dificultad", DIFICULTAD);
+                config.putExtras(parametros);
+                startActivity(config);
+            }});
 
         Playbtn=findViewById(R.id.jugar_btn);
         Playbtn.setOnClickListener(new View.OnClickListener() {
@@ -66,17 +84,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(play);
             }
         });
-
-        Trophies = findViewById(R.id.puntajes_btn);
-        Trophies.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent trophies = new Intent(MainActivity.this,TrofeosActivity.class);
-                startActivity(trophies);
-            }
-        });
          Bundle parametros = this.getIntent().getExtras();
          if (parametros != null) {
+             if(PARTIDA_CURSO){
+                 Continuarbtn.setVisibility(View.VISIBLE);
+             }else{
+                 Continuarbtn.setVisibility(View.INVISIBLE);
+             }
              CHEAT = parametros.getBoolean("cheat");
              CHEAT_NUM=parametros.getInt("cheat_num");
              Historia=parametros.getBoolean("historia");

@@ -28,10 +28,11 @@ public class BancoDeUsuarios {
 
     public List<Usuario> getMixedUsers(Usuario u1, Usuario u2, Usuario u3){
         List<Usuario> usuarios = new ArrayList<>();
-        usuarios.addAll(getAllUsers());
-        usuarios.remove(u1);
-        usuarios.remove(u2);
-        usuarios.remove(u3);
+        for (Usuario aux : getAllUsers()){
+            if(aux.getUserId()!=u1.getUserId()&&aux.getUserId()!=u2.getUserId()&&aux.getUserId()!=u3.getUserId()){
+                usuarios.add(aux);
+            }
+        }
         return usuarios;
     }
 }

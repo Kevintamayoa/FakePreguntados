@@ -15,7 +15,7 @@ public class TrofeosActivityModel extends ViewModel {
     public void loadHonestScores(String name, int points, boolean cheatState) {
         if (highestHonestScores == null) {
             BancoDeUsuarios bancoDeUsuarios = new BancoDeUsuarios();
-            newUser = new Usuario(bancoDeUsuarios.getAllUsers().size(), name, points, cheatState);
+            newUser = new Usuario(bancoDeUsuarios.getAllUsers().size()+1, name, points, cheatState);
             highestHonestScores = bancoDeUsuarios.getHonestUsers();
             if (!cheatState){highestHonestScores.add(newUser);}
             Collections.sort(highestHonestScores, new Comparator<Usuario>() {
@@ -35,6 +35,9 @@ public class TrofeosActivityModel extends ViewModel {
         if(highestMixedScores==null){
             BancoDeUsuarios bancoDeUsuarios = new BancoDeUsuarios();
             highestMixedScores = bancoDeUsuarios.getMixedUsers(u1,u2,u3);
+            if(newUser.getUserId()!=u1.getUserId()&&newUser.getUserId()!=u2.getUserId()&&newUser.getUserId()!=u3.getUserId()){
+                highestMixedScores.add(newUser);
+            }
             Collections.sort(highestMixedScores, new Comparator<Usuario>() {
                 @Override
                 public int compare(Usuario o1, Usuario o2) {

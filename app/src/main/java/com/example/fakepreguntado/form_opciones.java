@@ -99,6 +99,42 @@ public class form_opciones extends AppCompatActivity {
             public void onClick(View v) {
                 Dificil.setChecked(false);
                 Medio.setChecked(false);
+                int count=0;
+                if(GeografiaCheck.isChecked()){
+                    count++;
+                }
+                if(HistoriaCheck.isChecked()){
+                    count++;
+                }
+                if(ArteCheck.isChecked()){
+                    count++;
+                }
+                if(EntretenimientoCheck.isChecked()){
+                    count++;
+                }
+                if(IdiomasCheck.isChecked()){
+                    count++;
+                }
+                if(MatematicasCheck.isChecked()){
+                    count++;
+                }
+                if(CienciasCheck.isChecked()){
+                    count++;
+                }
+                if(DeportesCheck.isChecked()){
+                    count++;
+                }
+                if(count*2==0){
+                    PreguntaScroll.setValue(1);
+                    PreguntaScroll.setMaxValue(1);
+                }else{                if(PreguntaScroll.getValue()>count*2){
+                    PreguntaScroll.setValue(count*2);
+                }
+                PreguntaScroll.setMaxValue(count*2);}
+                if(CheatsScroll.getValue()>PreguntaScroll.getValue()){
+                    CheatsScroll.setValue(PreguntaScroll.getValue());
+                }
+                CheatsScroll.setMaxValue(PreguntaScroll.getValue());
             }
         });
         Medio.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +142,44 @@ public class form_opciones extends AppCompatActivity {
             public void onClick(View v) {
                 Dificil.setChecked(false);
                 Facil.setChecked(false);
+                int count=0;
+                if(GeografiaCheck.isChecked()){
+                    count++;
+                }
+                if(HistoriaCheck.isChecked()){
+                    count++;
+                }
+                if(ArteCheck.isChecked()){
+                    count++;
+                }
+                if(EntretenimientoCheck.isChecked()){
+                    count++;
+                }
+                if(IdiomasCheck.isChecked()){
+                    count++;
+                }
+                if(MatematicasCheck.isChecked()){
+                    count++;
+                }
+                if(CienciasCheck.isChecked()){
+                    count++;
+                }
+                if(DeportesCheck.isChecked()){
+                    count++;
+                }
+                if(count*4==0){
+                    PreguntaScroll.setValue(1);
+                    PreguntaScroll.setMaxValue(1);
+                }else{
+                    if(PreguntaScroll.getValue()>count*4){
+                    PreguntaScroll.setValue(count*4);
+                }
+                    PreguntaScroll.setMaxValue(count*4);
+                }
+                if(CheatsScroll.getValue()>PreguntaScroll.getValue()){
+                    CheatsScroll.setValue(PreguntaScroll.getValue());
+                }
+                CheatsScroll.setMaxValue(PreguntaScroll.getValue());
             }
         });
         Dificil.setOnClickListener(new View.OnClickListener() {
@@ -113,17 +187,425 @@ public class form_opciones extends AppCompatActivity {
             public void onClick(View v) {
                 Facil.setChecked(false);
                 Medio.setChecked(false);
-            }
-        });
-        PreguntaScroll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                int count=0;
+                if(GeografiaCheck.isChecked()){
+                    count++;
+                }
+                if(HistoriaCheck.isChecked()){
+                    count++;
+                }
+                if(ArteCheck.isChecked()){
+                    count++;
+                }
+                if(EntretenimientoCheck.isChecked()){
+                    count++;
+                }
+                if(IdiomasCheck.isChecked()){
+                    count++;
+                }
+                if(MatematicasCheck.isChecked()){
+                    count++;
+                }
+                if(CienciasCheck.isChecked()){
+                    count++;
+                }
+                if(DeportesCheck.isChecked()){
+                    count++;
+                }
+                if(count*5==0){
+                    PreguntaScroll.setValue(1);
+                    PreguntaScroll.setMaxValue(1);
+                }else{
+                    if(PreguntaScroll.getValue()>count*5){
+                        PreguntaScroll.setValue(count*5);
+                    }
+                    PreguntaScroll.setMaxValue(count*5);
+                }
+                if(CheatsScroll.getValue()>PreguntaScroll.getValue()){
+                    CheatsScroll.setValue(PreguntaScroll.getValue());
+                }
                 CheatsScroll.setMaxValue(PreguntaScroll.getValue());
             }
         });
+        HistoriaCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int count=0;
+                if(GeografiaCheck.isChecked()){
+                    count++;
+                }
+                if(HistoriaCheck.isChecked()){
+                    count++;
+                }
+                if(ArteCheck.isChecked()){
+                    count++;
+                }
+                if(EntretenimientoCheck.isChecked()){
+                    count++;
+                }
+                if(IdiomasCheck.isChecked()){
+                    count++;
+                }
+                if(MatematicasCheck.isChecked()){
+                    count++;
+                }
+                if(CienciasCheck.isChecked()){
+                    count++;
+                }
+                if(DeportesCheck.isChecked()){
+                    count++;
+                }
+                if(count*5==0){
+                    PreguntaScroll.setValue(1);
+                    PreguntaScroll.setMaxValue(1);
+                }else{
+                    if(PreguntaScroll.getValue()>count*5){
+                        PreguntaScroll.setValue(count*5);
+                    }
+                    PreguntaScroll.setMaxValue(count*5);
+                }
+                if(CheatsScroll.getValue()>PreguntaScroll.getValue()){
+                    CheatsScroll.setValue(PreguntaScroll.getValue());
+                }
+                CheatsScroll.setMaxValue(PreguntaScroll.getValue());
+            }
+        });
+        GeografiaCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int count=0;
+                if(GeografiaCheck.isChecked()){
+                    count++;
+                }
+                if(HistoriaCheck.isChecked()){
+                    count++;
+                }
+                if(ArteCheck.isChecked()){
+                    count++;
+                }
+                if(EntretenimientoCheck.isChecked()){
+                    count++;
+                }
+                if(IdiomasCheck.isChecked()){
+                    count++;
+                }
+                if(MatematicasCheck.isChecked()){
+                    count++;
+                }
+                if(CienciasCheck.isChecked()){
+                    count++;
+                }
+                if(DeportesCheck.isChecked()){
+                    count++;
+                }
+                if(count*5==0){
+                    PreguntaScroll.setValue(1);
+                    PreguntaScroll.setMaxValue(1);
+                }else{
+                    if(PreguntaScroll.getValue()>count*5){
+                        PreguntaScroll.setValue(count*5);
+                    }
+                    PreguntaScroll.setMaxValue(count*5);
+                }
+                if(CheatsScroll.getValue()>PreguntaScroll.getValue()){
+                    CheatsScroll.setValue(PreguntaScroll.getValue());
+                }
+                CheatsScroll.setMaxValue(PreguntaScroll.getValue());
+            }
+        });
+        ArteCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int count=0;
+                if(GeografiaCheck.isChecked()){
+                    count++;
+                }
+                if(HistoriaCheck.isChecked()){
+                    count++;
+                }
+                if(ArteCheck.isChecked()){
+                    count++;
+                }
+                if(EntretenimientoCheck.isChecked()){
+                    count++;
+                }
+                if(IdiomasCheck.isChecked()){
+                    count++;
+                }
+                if(MatematicasCheck.isChecked()){
+                    count++;
+                }
+                if(CienciasCheck.isChecked()){
+                    count++;
+                }
+                if(DeportesCheck.isChecked()){
+                    count++;
+                }
+                if(count*5==0){
+                    PreguntaScroll.setValue(1);
+                    PreguntaScroll.setMaxValue(1);
+                }else{
+                    if(PreguntaScroll.getValue()>count*5){
+                        PreguntaScroll.setValue(count*5);
+                    }
+                    PreguntaScroll.setMaxValue(count*5);
+                }
+                if(CheatsScroll.getValue()>PreguntaScroll.getValue()){
+                    CheatsScroll.setValue(PreguntaScroll.getValue());
+                }
+                CheatsScroll.setMaxValue(PreguntaScroll.getValue());
+            }
+        });
+        DeportesCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int count=0;
+                if(GeografiaCheck.isChecked()){
+                    count++;
+                }
+                if(HistoriaCheck.isChecked()){
+                    count++;
+                }
+                if(ArteCheck.isChecked()){
+                    count++;
+                }
+                if(EntretenimientoCheck.isChecked()){
+                    count++;
+                }
+                if(IdiomasCheck.isChecked()){
+                    count++;
+                }
+                if(MatematicasCheck.isChecked()){
+                    count++;
+                }
+                if(CienciasCheck.isChecked()){
+                    count++;
+                }
+                if(DeportesCheck.isChecked()){
+                    count++;
+                }
+                if(count*5==0){
+                    PreguntaScroll.setValue(1);
+                    PreguntaScroll.setMaxValue(1);
+                }else{
+                    if(PreguntaScroll.getValue()>count*5){
+                        PreguntaScroll.setValue(count*5);
+                    }
+                    PreguntaScroll.setMaxValue(count*5);
+                }
+                if(CheatsScroll.getValue()>PreguntaScroll.getValue()){
+                    CheatsScroll.setValue(PreguntaScroll.getValue());
+                }
+                CheatsScroll.setMaxValue(PreguntaScroll.getValue());
+            }
+        });
+        EntretenimientoCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int count=0;
+                if(GeografiaCheck.isChecked()){
+                    count++;
+                }
+                if(HistoriaCheck.isChecked()){
+                    count++;
+                }
+                if(ArteCheck.isChecked()){
+                    count++;
+                }
+                if(EntretenimientoCheck.isChecked()){
+                    count++;
+                }
+                if(IdiomasCheck.isChecked()){
+                    count++;
+                }
+                if(MatematicasCheck.isChecked()){
+                    count++;
+                }
+                if(CienciasCheck.isChecked()){
+                    count++;
+                }
+                if(DeportesCheck.isChecked()){
+                    count++;
+                }
+                if(count*5==0){
+                    PreguntaScroll.setValue(1);
+                    PreguntaScroll.setMaxValue(1);
+                }else{
+                    if(PreguntaScroll.getValue()>count*5){
+                        PreguntaScroll.setValue(count*5);
+                    }
+                    PreguntaScroll.setMaxValue(count*5);
+                }
+                if(CheatsScroll.getValue()>PreguntaScroll.getValue()){
+                    CheatsScroll.setValue(PreguntaScroll.getValue());
+                }
+                CheatsScroll.setMaxValue(PreguntaScroll.getValue());
+            }
+        });
+        IdiomasCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int count=0;
+                if(GeografiaCheck.isChecked()){
+                    count++;
+                }
+                if(HistoriaCheck.isChecked()){
+                    count++;
+                }
+                if(ArteCheck.isChecked()){
+                    count++;
+                }
+                if(EntretenimientoCheck.isChecked()){
+                    count++;
+                }
+                if(IdiomasCheck.isChecked()){
+                    count++;
+                }
+                if(MatematicasCheck.isChecked()){
+                    count++;
+                }
+                if(CienciasCheck.isChecked()){
+                    count++;
+                }
+                if(DeportesCheck.isChecked()){
+                    count++;
+                }
+                if(count*5==0){
+                    PreguntaScroll.setValue(1);
+                    PreguntaScroll.setMaxValue(1);
+                }else{
+                    if(PreguntaScroll.getValue()>count*5){
+                        PreguntaScroll.setValue(count*5);
+                    }
+                    PreguntaScroll.setMaxValue(count*5);
+                }
+                if(CheatsScroll.getValue()>PreguntaScroll.getValue()){
+                    CheatsScroll.setValue(PreguntaScroll.getValue());
+                }
+                CheatsScroll.setMaxValue(PreguntaScroll.getValue());
+            }
+        });
+        MatematicasCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int count=0;
+                if(GeografiaCheck.isChecked()){
+                    count++;
+                }
+                if(HistoriaCheck.isChecked()){
+                    count++;
+                }
+                if(ArteCheck.isChecked()){
+                    count++;
+                }
+                if(EntretenimientoCheck.isChecked()){
+                    count++;
+                }
+                if(IdiomasCheck.isChecked()){
+                    count++;
+                }
+                if(MatematicasCheck.isChecked()){
+                    count++;
+                }
+                if(CienciasCheck.isChecked()){
+                    count++;
+                }
+                if(DeportesCheck.isChecked()){
+                    count++;
+                }
+                if(count*5==0){
+                    PreguntaScroll.setValue(1);
+                    PreguntaScroll.setMaxValue(1);
+                }else{
+                    if(PreguntaScroll.getValue()>count*5){
+                        PreguntaScroll.setValue(count*5);
+                    }
+                    PreguntaScroll.setMaxValue(count*5);
+                }
+                if(CheatsScroll.getValue()>PreguntaScroll.getValue()){
+                    CheatsScroll.setValue(PreguntaScroll.getValue());
+                }
+                CheatsScroll.setMaxValue(PreguntaScroll.getValue());
+            }
+        });
+        CienciasCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int count=0;
+                if(GeografiaCheck.isChecked()){
+                    count++;
+                }
+                if(HistoriaCheck.isChecked()){
+                    count++;
+                }
+                if(ArteCheck.isChecked()){
+                    count++;
+                }
+                if(EntretenimientoCheck.isChecked()){
+                    count++;
+                }
+                if(IdiomasCheck.isChecked()){
+                    count++;
+                }
+                if(MatematicasCheck.isChecked()){
+                    count++;
+                }
+                if(CienciasCheck.isChecked()){
+                    count++;
+                }
+                if(DeportesCheck.isChecked()){
+                    count++;
+                }
+                if(count*5==0){
+                    PreguntaScroll.setValue(1);
+                    PreguntaScroll.setMaxValue(1);
+                }else{
+                    if(PreguntaScroll.getValue()>count*5){
+                        PreguntaScroll.setValue(count*5);
+                    }
+                    PreguntaScroll.setMaxValue(count*5);
+                }
+                if(CheatsScroll.getValue()>PreguntaScroll.getValue()){
+                    CheatsScroll.setValue(PreguntaScroll.getValue());
+                }
+                CheatsScroll.setMaxValue(PreguntaScroll.getValue());
+            }
+        });
+
      AtrasButton.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
+             int count=0;
+             if(GeografiaCheck.isChecked()){
+                 count++;
+             }
+             if(HistoriaCheck.isChecked()){
+                 count++;
+             }
+             if(ArteCheck.isChecked()){
+                 count++;
+             }
+             if(EntretenimientoCheck.isChecked()){
+                 count++;
+             }
+             if(IdiomasCheck.isChecked()){
+                 count++;
+             }
+             if(MatematicasCheck.isChecked()){
+                 count++;
+             }
+             if(CienciasCheck.isChecked()){
+                 count++;
+             }
+             if(DeportesCheck.isChecked()){
+                 count++;
+             }
+             if(count==0){
+                 Toast.makeText(form_opciones.this,
+                         "Tiene que haber al menos una categoría seleccionada para continuar.",
+                         Toast.LENGTH_LONG).show();
+                 return;
+             }
              Bundle parmetros = new Bundle();
              parmetros.putBoolean("cheat", CheatsSwitch.isChecked());
              parmetros.putInt("cheat_num", CheatsScroll.getValue());
@@ -158,11 +640,21 @@ public class form_opciones extends AppCompatActivity {
                 if (CheatsSwitch.isChecked()) {
                     CheatsScroll.setVisibility(View.VISIBLE);
                     CheatsText.setVisibility(View.VISIBLE);
-                    CheatsScroll.setValue(3);
+                    CheatsScroll.setValue(1);
                 } else {
                     CheatsScroll.setVisibility(View.INVISIBLE);
                     CheatsText.setVisibility(View.INVISIBLE);
                 }
+            }
+        });
+
+        PreguntaScroll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(CheatsScroll.getValue()>PreguntaScroll.getValue()){
+                    CheatsScroll.setValue(PreguntaScroll.getValue());
+                }
+               CheatsScroll.setMaxValue(PreguntaScroll.getValue());
             }
         });
         Bundle parametros = this.getIntent().getExtras();

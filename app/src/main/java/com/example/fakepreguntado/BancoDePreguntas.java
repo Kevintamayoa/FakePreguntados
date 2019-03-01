@@ -2,6 +2,7 @@ package com.example.fakepreguntado;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class BancoDePreguntas {
     public List<Question> getAllQuestions() {
@@ -50,4 +51,23 @@ public class BancoDePreguntas {
 
         return questions;
     }
+        public List<Question> getQuestionsByParams(int num,int dificultad,List<Integer> categorias) {
+                List<Question> questions = new ArrayList<>();
+                List<Question> questions2 = getAllQuestions();
+                Random rand = new Random();
+                for (int i=0;i<num;i++){
+                        boolean paso=false;
+                        Question obj;
+                        do{
+                       obj=questions2.get(rand.nextInt(questions2.size()));
+                       if(obj.getDifficulty()<=dificultad&&categorias.contains(obj.getCategory()))
+                       {
+                       paso=true;
+                       }
+                        }while(!paso);
+                        questions.add(obj);
+                        questions2.remove(obj);
+                }
+                return questions;
+        }
 }

@@ -22,17 +22,18 @@ public class PreguntasActivityModel extends ViewModel {
         currentQuestionIndex = (currentQuestionIndex == 0) ? preguntas.size() - 1 : currentQuestionIndex - 1;
     }
 
-    public void loadGameQuestions() {
+    public void loadGameQuestions(List<Question> LIST) {
         if (preguntas == null) {
             currentQuestionIndex = 0;
-            BancoDePreguntas bancoDePreguntas = new BancoDePreguntas();
-            preguntas = bancoDePreguntas.getAllQuestions();
+
+            preguntas = LIST;
         }
     }
 
-    public void loadNewUser(){
+    public void loadNewUser(boolean cheat){
         if(usuario==null){
-            usuario = new Usuario(1,"AAA",0,false);
+            BancoDeUsuarios obj= new BancoDeUsuarios();
+            usuario = new Usuario(obj.getAllUsers().size()+1,"AAA",0,cheat);
         }
     }
 

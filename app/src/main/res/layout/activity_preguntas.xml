@@ -41,6 +41,9 @@
     </LinearLayout>
 
     <!-- Botones de traslado y pregunta -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="150px" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -75,8 +78,21 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/non_desc"
             android:src="@drawable/ic_chevron_right_black_24dp" />
-    </LinearLayout>
 
+
+    </LinearLayout>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="100px" />
+    <TextView
+        android:id="@+id/texto_pregunta_respondida"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="pregunta" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="150px" />
     <!-- Botones de respuesta -->
     <LinearLayout
         android:layout_width="match_parent"

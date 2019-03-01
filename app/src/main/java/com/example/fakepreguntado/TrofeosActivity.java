@@ -1,5 +1,8 @@
 package com.example.fakepreguntado;
 
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProviders;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class TrofeosActivity extends AppCompatActivity {
-
     ImageView endTrophy;
     TextView primerLugar;
     TextView segundoLugar;
@@ -16,6 +18,7 @@ public class TrofeosActivity extends AppCompatActivity {
     TextView quintoLugar;
     TextView sextoLugar;
 
+    TrofeosActivityModel trofeosActivityModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,18 +32,20 @@ public class TrofeosActivity extends AppCompatActivity {
         cuartoLugar = findViewById(R.id.cuarto_lugar);
         quintoLugar = findViewById(R.id.quinto_lugar);
         sextoLugar = findViewById(R.id.sexto_lugar);
-    }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-    }
-    //Pendiente
-    public void ShowMyLatestScore(View v){
+        trofeosActivityModel = ViewModelProviders.of(this).get(TrofeosActivityModel.class);
+        trofeosActivityModel.loadHonestScores("ABB",70,false);
 
-    }
-    //Pendiente
-    public void ShowScore(View v){
+        //endTrophy.setImageTintList();
+        primerLugar.setText(primerLugar.getText()+trofeosActivityModel.highestHonestScores.get(0).getName());
+        segundoLugar.setText(segundoLugar.getText()+trofeosActivityModel.highestHonestScores.get(1).getName());
+        tercerLugar.setText(tercerLugar.getText()+trofeosActivityModel.highestHonestScores.get(2).getName());
 
+        trofeosActivityModel.loadMixedScores(trofeosActivityModel.highestHonestScores.get(0),
+                                             trofeosActivityModel.highestHonestScores.get(1),
+                                             trofeosActivityModel.highestHonestScores.get(2));
+        cuartoLugar.setText(cuartoLugar.getText()+trofeosActivityModel.highestMixedScores.get(0).getName());
+        quintoLugar.setText(quintoLugar.getText()+trofeosActivityModel.highestMixedScores.get(1).getName());
+        sextoLugar.setText(sextoLugar.getText()+trofeosActivityModel.highestMixedScores.get(2).getName());
     }
 }

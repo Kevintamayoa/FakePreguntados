@@ -22,6 +22,8 @@ public class Usuario {
 
     public String getName(){return name;}
 
+    public void setName(String nam){name=nam;}
+
     public int getPuntajeMax(){return puntajeMax;}
 
     public void setPuntajeMax(int puntaje){puntajeMax=puntaje;}

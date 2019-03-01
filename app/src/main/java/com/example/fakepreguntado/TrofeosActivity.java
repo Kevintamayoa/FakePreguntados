@@ -2,12 +2,21 @@ package com.example.fakepreguntado;
 
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.NumberPicker;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Arrays;
 
 public class TrofeosActivity extends AppCompatActivity {
     ImageView endTrophy;
@@ -20,8 +29,10 @@ public class TrofeosActivity extends AppCompatActivity {
 
     TrofeosActivityModel trofeosActivityModel;
 
+    public String playerName="";
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trophies);
 
@@ -33,19 +44,66 @@ public class TrofeosActivity extends AppCompatActivity {
         quintoLugar = findViewById(R.id.quinto_lugar);
         sextoLugar = findViewById(R.id.sexto_lugar);
 
-        trofeosActivityModel = ViewModelProviders.of(this).get(TrofeosActivityModel.class);
-        trofeosActivityModel.loadHonestScores("ABB",70,false);
+        LinearLayout LL = new LinearLayout(TrofeosActivity.this);
+        LL.setOrientation(LinearLayout.HORIZONTAL);
+        final NumberPicker letras = new NumberPicker(TrofeosActivity.this);
+        letras.setMaxValue(25);
+        letras.setMinValue(0);
+        letras.setDisplayedValues(new String[] {"A","B","C","D","E","F","G","H","I","J","K","L","M","N"
+                ,"O","P","Q","R","S","T","U","V","W","X","Y","Z"});
 
+        final NumberPicker letras2 = new NumberPicker(TrofeosActivity.this);
+        letras2.setMaxValue(25);
+        letras2.setMinValue(0);
+        letras2.setDisplayedValues(new String[] {"A","B","C","D","E","F","G","H","I","J","K","L","M","N"
+                ,"O","P","Q","R","S","T","U","V","W","X","Y","Z"});
+
+        final NumberPicker letras3 = new NumberPicker(TrofeosActivity.this);
+        letras3.setMaxValue(25);
+        letras3.setMinValue(0);
+        letras3.setDisplayedValues(new String[] {"A","B","C","D","E","F","G","H","I","J","K","L","M","N"
+                ,"O","P","Q","R","S","T","U","V","W","X","Y","Z"});
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(50, 50);
+        params.gravity= Gravity.CENTER;
+
+        LinearLayout.LayoutParams letrasparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        letrasparams.weight=1;
+        LL.setLayoutParams(params);
+        LL.addView(letras,letrasparams);
+        LL.addView(letras2,letrasparams);
+        LL.addView(letras3,letrasparams);
+
+        AlertDialog.Builder nameChooser = new AlertDialog.Builder(TrofeosActivity.this);
+        nameChooser.setTitle("JUGADOR");
+        nameChooser.setMessage("Elige un nombre de 3 letras");
+        nameChooser.setView(LL);
+        nameChooser.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                trofeosActivityModel = ViewModelProviders.of(TrofeosActivity.this).get(TrofeosActivityModel.class);
+                playerName=passNameFromDialog(letras.getValue(),letras2.getValue(),letras3.getValue());
+                trofeosActivityModel.loadHonestScores(playerName,70,false);
+                primerLugar.setText("1er Lugar: "+trofeosActivityModel.getHonestUserName(0));
+                segundoLugar.setText("2do Lugar: "+trofeosActivityModel.getHonestUserName(1));
+                tercerLugar.setText("3er Lugar: "+trofeosActivityModel.getHonestUserName(2));
+                trofeosActivityModel.loadMixedScores(trofeosActivityModel.highestHonestScores.get(0),
+                        trofeosActivityModel.highestHonestScores.get(1),
+                        trofeosActivityModel.highestHonestScores.get(2));
+                cuartoLugar.setText("4to Lugar: "+trofeosActivityModel.highestMixedScores.get(0).getName());
+                quintoLugar.setText("5to Lugar: "+trofeosActivityModel.highestMixedScores.get(1).getName());
+                sextoLugar.setText("6to Lugar: "+trofeosActivityModel.highestMixedScores.get(2).getName());
+            }
+        });
+        nameChooser.show();
         //endTrophy.setImageTintList();
-        primerLugar.setText(primerLugar.getText()+trofeosActivityModel.getHonestUserName(0));
-        segundoLugar.setText(segundoLugar.getText()+trofeosActivityModel.getHonestUserName(1));
-        tercerLugar.setText(tercerLugar.getText()+trofeosActivityModel.getHonestUserName(2));
+    }
 
-        trofeosActivityModel.loadMixedScores(trofeosActivityModel.highestHonestScores.get(0),
-                                             trofeosActivityModel.highestHonestScores.get(1),
-                                             trofeosActivityModel.highestHonestScores.get(2));
-        cuartoLugar.setText(cuartoLugar.getText()+trofeosActivityModel.highestMixedScores.get(0).getName());
-        quintoLugar.setText(quintoLugar.getText()+trofeosActivityModel.highestMixedScores.get(1).getName());
-        sextoLugar.setText(sextoLugar.getText()+trofeosActivityModel.highestMixedScores.get(2).getName());
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    public String passNameFromDialog(int s1,int s2,int s3){
+        return Character.toString((char)(s1+65))+Character.toString((char)(s2+65))+Character.toString((char)(s3+65));
     }
 }
